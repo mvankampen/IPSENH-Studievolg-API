@@ -27,6 +27,7 @@ pipeline {
        }  
       steps {
         echo 'Deploying...'
+        echo 'And publishing...'
         sh 'make publish'
       }
     }
