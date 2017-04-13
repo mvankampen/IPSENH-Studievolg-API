@@ -68,4 +68,23 @@
             <version>2.77</version>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+           <plugin>
+                <groupId>com.vogella.example</groupId>
+                <artifactId>vogella-some-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>checklinks</goal>
+                        </goals>
+                    </execution>
+               </executions>
+           </plugin>
+        </plugins>
+    </build>
+    
 </project>
