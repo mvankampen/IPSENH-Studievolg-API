@@ -18,19 +18,19 @@ public class ApiConfiguration extends Configuration implements AssetsBundleConfi
 
     @NotEmpty
     private String apiName;
-
-    @Valid
-    @NotNull
-    @JsonProperty
+//
+//    @Valid
+//    @NotNull
+//    @JsonProperty
     private final AssetsConfiguration assets = AssetsConfiguration.builder().build();
-
-    @Valid
-    @NotNull
-    private DataSourceFactory database = new DataSourceFactory();
-
-    public DataSourceFactory getDatabase() {
-        return this.database;
-    }
+//
+//    @Valid
+//    @NotNull
+//    private DataSourceFactory database = new DataSourceFactory();
+//
+//    public DataSourceFactory getDatabase() {
+//        return this.database;
+//    }
 
     public AssetsConfiguration getAssetsConfiguration() {
         return assets;
@@ -43,9 +43,9 @@ public class ApiConfiguration extends Configuration implements AssetsBundleConfi
     public void setApiName(String apiName) {
         this.apiName = apiName;
     }
-
-    @JsonProperty("database")
-    public void setDatabase(DataSourceFactory database) {
-        this.database = database;
-    }
+//
+//    @JsonProperty("database")
+//    public void setDatabase(DataSourceFactory database) {
+//        this.database = database;
+//    }
 }

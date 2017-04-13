@@ -18,8 +18,8 @@ public class ApiApplication extends Application<ApiConfiguration> {
 
     @Override
     public void run(ApiConfiguration configuration, Environment environment) throws Exception {
-        System.out.println(String.format("Set API name to: %d", configuration.getApiName()));
-
+//        System.out.println(String.format("Set API name to: %d", configuration.getApiName()));
+        System.out.println("API run successful");
         //setup resources
         //TODO: setup user resources
 
