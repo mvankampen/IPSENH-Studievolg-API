@@ -43,7 +43,7 @@ public class ApiConfiguration extends Configuration implements AssetsBundleConfi
     public void setApiName(String apiName) {
         this.apiName = apiName;
     }
-    
+
 //
 //    @JsonProperty("database")
 //    public void setDatabase(DataSourceFactory database) {
