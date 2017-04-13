@@ -117,7 +117,7 @@
                         <id>id.validate</id>
                         <phase>validate</phase>
                         <goals>
-                            <goal>run</goal>
+                            <goal>process-resources</goal>
                         </goals>
                         <configuration>
                             <tasks>
