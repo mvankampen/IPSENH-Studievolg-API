@@ -89,7 +89,7 @@
                     </filters>
                 </configuration>
                 <executions>
-                    <execution>
+<!--                    <execution>
                         <id>id.pre-clean</id>
                         <phase>pre-clean</phase>
                         <goals>
@@ -112,7 +112,7 @@
                                 <echo>clean phase</echo>
                             </tasks>
                         </configuration>
-                    </execution>
+                    </execution>-->
                     <execution>
                         <id>id.validate</id>
                         <phase>validate</phase>
@@ -125,7 +125,7 @@
                             </tasks>
                         </configuration>
                     </execution>
-                    <execution>
+<!--                    <execution>
                         <id>id.compile</id>
                         <phase>compile</phase>
                         <goals>
@@ -140,7 +140,7 @@
                     <execution>
                         <id>id.test</id>
                         <phase>test</phase>
-                    </execution>
+                    </execution>-->
                     <execution>
                         <id>id.package</id>
                         <phase>package</phase>
@@ -156,13 +156,13 @@
                             </transformers>
                         </configuration>
                     </execution>
-                    <execution>
+<!--                    <execution>
                         <id>verify</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>verify</goal>
                         </goals>
-                    </execution>
+                    </execution>-->
                 </executions>
             </plugin>
         </plugins>
