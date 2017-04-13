@@ -19,15 +19,16 @@
     <build>
         <plugins>
            <plugin>
-               <groupId>org.codehaus.cargo</groupId>
-               <artifactId>cargo-maven2-plugin</artifactId>
-               <executions>
-                   <execution>
-                       <phase>package</phase>
-                       <goals>
-                           <goal>start</goal>
-                       </goals>
-                   </execution>
+                <groupId>com.vogella.example</groupId>
+                <artifactId>vogella-some-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>checklinks</goal>
+                        </goals>
+                    </execution>
                </executions>
            </plugin>
         </plugins>
