@@ -50,6 +50,17 @@ public class User {
         this.role = role;
     }
 
+    public User(String email, String password, String firstName, String insertion, String lastName,
+                Date dateOfBirth, String role) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.insertion = insertion;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.role = role;
+    }
+
     public long getId() {
         return id;
     }

@@ -3,6 +3,9 @@ package nl.ipsenh;
 import io.dropwizard.Application;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Environment;
+import nl.ipsenh.persistence.UserDAO;
+import nl.ipsenh.resource.UserResource;
+import nl.ipsenh.service.UserService;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.skife.jdbi.v2.DBI;
 
@@ -26,8 +29,12 @@ public class ApiApplication extends Application<ApiConfiguration> {
         final DBIFactory dbiFactory = new DBIFactory();
         final DBI jdbi = dbiFactory.build(environment, configuration.getDatabase(), "postgresql");
 
-        //setup resources
-        //TODO: setup user resources
+        //Setup resources
+        final UserDAO userDAO = jdbi.onDemand(UserDAO.class);
+
+        final UserService userService = new UserService(userDAO);
+
+        environment.jersey().register(new UserResource(userService));
 
         configureClientFilter(environment);
     }
