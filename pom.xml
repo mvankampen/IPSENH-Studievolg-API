@@ -93,6 +93,10 @@
                         <version>2.20</version>
                     </dependency>
                 </dependencies>
+                 <configuration>
+                    <testSourceDirectory>${basedir}/src/main/java/</testSourceDirectory>
+                    <testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
