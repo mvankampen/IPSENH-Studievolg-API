@@ -94,7 +94,7 @@
                     </dependency>
                 </dependencies>
                  <configuration>
-                    <testSourceDirectory>${basedir}/src/main/java/</testSourceDirectory>
+                    <testSourceDirectory>${basedir}/src/test/java/</testSourceDirectory>
                     <testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
                 </configuration>
             </plugin>
