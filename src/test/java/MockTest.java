@@ -10,8 +10,8 @@ public class MockTest extends TestCase {
         assertEquals("HelloWorld", text);
     }
 
-    public void fakeTestFalse() {
-        String text = "HelloWorldddd";
-        assertEquals("HelloWorld", text);
-    }
+//    public void fakeTestFalse() {
+//        String text = "HelloWorldddd";
+//        assertEquals("HelloWorld", text);
+//    }
 }
