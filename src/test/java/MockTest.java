@@ -11,4 +11,10 @@ public class MockTest {
         String text = "HelloWorld";
         Assert.assertEquals("HelloWorld", text);
     }
+
+    @Test
+    public void failTestResult() {
+        String text = "HelloWorld";
+        Assert.assertEquals("HellWorld", text);
+    }
 }
