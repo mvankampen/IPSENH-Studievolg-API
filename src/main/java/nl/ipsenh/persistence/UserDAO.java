@@ -27,4 +27,10 @@ public interface UserDAO {
                            @Bind("last_name") String last_name, @Bind("email") String email,
                            @Bind("date_of_birth") Date dateOfBirth, @Bind("password") String password,
                            @Bind("role") String role); //TODO: encrypt password SHA256 (db)
+
+    @SqlUpdate("UPDATE user_account SET first_name = :first_name, insertion = :insertion, last_name = :last_name, email = :email, date_of_birth = :date_of_birth, password = :password, role = :role WHERE id = :id")
+    public void updateUser(@Bind("first_name") String firstName, @Bind("insertion") String insertion,
+                           @Bind("last_name") String last_name, @Bind("email") String email,
+                           @Bind("date_of_birth") Date dateOfBirth, @Bind("password") String password,
+                           @Bind("role") String role, @Bind("id") long id); //TODO: encrypt password SHA256 (db))
 }

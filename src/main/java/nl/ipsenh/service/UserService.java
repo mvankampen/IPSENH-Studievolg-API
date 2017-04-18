@@ -28,4 +28,9 @@ public class UserService {
         dao.insertUser(user.getFirstName(), user.getInsertion(), user.getLastName(),
                 user.getEmail(), user.getDateOfBirth(), user.getPassword(), user.getRole());
     }
+
+    public void updateUser(long id, User user) {
+        dao.updateUser(user.getFirstName(), user.getInsertion(), user.getLastName(),
+                user.getEmail(), user.getDateOfBirth(), user.getPassword(), user.getRole(), id);
+    }
 }

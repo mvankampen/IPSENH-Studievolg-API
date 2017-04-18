@@ -24,6 +24,8 @@ public class UserResource {
         this.service = userService;
     }
 
+    //TODO: change JsonView classes to correct classes after authentication implementation!
+
     @GET
     @JsonView(View.Public.class)
     @Timed
@@ -44,5 +46,12 @@ public class UserResource {
     public void insertUser(User user) {
         System.out.println(user.getEmail());
         service.insertUser(user);
+    }
+
+    @PUT
+    @JsonView(View.Public.class)
+    @Path("/{id}")
+    public void updateUser(@PathParam("id") long id, User user) {
+        service.updateUser(id, user);
     }
 }
