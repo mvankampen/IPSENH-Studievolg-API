@@ -33,7 +33,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -93,10 +92,6 @@
                         <version>2.20</version>
                     </dependency>
                 </dependencies>
-                 <configuration>
-                    <testSourceDirectory>${basedir}/src/test/java/</testSourceDirectory>
-                    <testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
