@@ -8,7 +8,7 @@ import java.util.Collection;
 /**
  * Created by Jamie on 13-4-2017.
  */
-public class UserService {
+public class UserService extends BaseService<User> {
 
     private final UserDAO dao;
 
@@ -21,7 +21,7 @@ public class UserService {
     }
 
     public User getUserById(long id) {
-        return this.dao.getUserById(id);
+        return requireResult(this.dao.getUserById(id));
     }
 
     public void insertUser(User user) {
