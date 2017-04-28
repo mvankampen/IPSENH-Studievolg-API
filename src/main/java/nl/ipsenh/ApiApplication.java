@@ -1,8 +1,13 @@
 package nl.ipsenh;
 
 import io.dropwizard.Application;
+import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Environment;
+import nl.ipsenh.persistence.UserDAO;
+import nl.ipsenh.resource.UserResource;
+import nl.ipsenh.service.UserService;
 import org.eclipse.jetty.servlet.FilterHolder;
+import org.skife.jdbi.v2.DBI;
 
 import javax.servlet.DispatcherType;
 import java.util.EnumSet;
@@ -18,10 +23,18 @@ public class ApiApplication extends Application<ApiConfiguration> {
 
     @Override
     public void run(ApiConfiguration configuration, Environment environment) throws Exception {
-//        System.out.println(String.format("Set API name to: %d", configuration.getApiName()));
-        System.out.println("API run successful");
-        //setup resources
-        //TODO: setup user resources
+        System.out.println("Set API name to: " + configuration.getApiName());
+
+        //Setup database
+        final DBIFactory dbiFactory = new DBIFactory();
+        final DBI jdbi = dbiFactory.build(environment, configuration.getDatabase(), "postgresql");
+
+        //Setup resources
+        final UserDAO userDAO = jdbi.onDemand(UserDAO.class);
+
+        final UserService userService = new UserService(userDAO);
+
+        environment.jersey().register(new UserResource(userService));
 
         configureClientFilter(environment);
     }
