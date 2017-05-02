@@ -2,6 +2,7 @@ package nl.ipsenh;
 
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
+import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Environment;
@@ -14,6 +15,7 @@ import nl.ipsenh.service.AuthenticationService;
 import nl.ipsenh.service.RoleService;
 import nl.ipsenh.service.UserService;
 import org.eclipse.jetty.servlet.FilterHolder;
+import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import org.skife.jdbi.v2.DBI;
 
 import javax.servlet.DispatcherType;
@@ -62,7 +64,8 @@ public class ApiApplication extends Application<ApiConfiguration> {
                         .setUnauthorizedHandler(apiUnauthorizedHandler)
                         .buildAuthFilter())
         );
-
+        environment.jersey().register(new AuthValueFactoryProvider.Binder<User>(User.class));
+        environment.jersey().register(RolesAllowedDynamicFeature.class);
     }
 
     private void configureClientFilter(Environment environment) {

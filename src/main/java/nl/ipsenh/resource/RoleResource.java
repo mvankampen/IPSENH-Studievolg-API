@@ -2,7 +2,9 @@ package nl.ipsenh.resource;
 
 import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.annotation.JsonView;
+import io.dropwizard.auth.Auth;
 import nl.ipsenh.View;
+import nl.ipsenh.model.User;
 import nl.ipsenh.service.RoleService;
 
 import javax.ws.rs.Consumes;
