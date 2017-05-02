@@ -20,25 +20,19 @@ public class UserService extends BaseService<User> {
         return this.dao.getAll();
     }
 
-    public User getUserById(long id) {
-        return requireResult(this.dao.getUserById(id));
-    }
-
-    public User getUserByEmail(String email) {
-        return requireResult(this.dao.getUserByEmail(email));
-    }
-
     public void insertUser(User user) {
-        dao.insertUser(user.getFirstName(), user.getInsertion(), user.getLastName(),
-                user.getEmail(), user.getDateOfBirth(), user.getPassword(), user.getRole());
+        dao.insertUser(user);
     }
 
-    public void updateUser(long id, User user) {
-        dao.updateUser(user.getFirstName(), user.getInsertion(), user.getLastName(),
-                user.getEmail(), user.getDateOfBirth(), user.getRole(), id);
+    public void updateUser(String userEmail, User user) {
+        dao.updateUser(user, userEmail);
     }
 
     public void updatePassword(String email, User user) {
         dao.updatePassword(email, user.getPassword());
+    }
+
+    public User getUserByEmail(String userEmail) {
+        return dao.getUserByEmail(userEmail);
     }
 }

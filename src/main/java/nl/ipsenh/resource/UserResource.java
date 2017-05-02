@@ -39,10 +39,10 @@ public class UserResource {
     @GET
     @JsonView(View.Public.class)
     @RolesAllowed("admin")
-    @Path("/{id}")
+    @Path("/{email}")
     @Timed
-    public User getUserById(@PathParam("id") long id) {
-        return service.getUserById(id);
+    public User getUserById(@PathParam("email") String userEmail) {
+        return service.getUserByEmail(userEmail);
     }
 
     @POST
@@ -54,10 +54,10 @@ public class UserResource {
 
     @PUT
     @JsonView(View.Protected.class)
-    @Path("/{id}")
+    @Path("/{email}")
     @RolesAllowed("admin")
-    public void updateUser(@PathParam("id") long id, User user) {
-        service.updateUser(id, user);
+    public void updateUser(@PathParam("email") String userEmail, User user) {
+        service.updateUser(userEmail, user);
     }
 
     @PUT

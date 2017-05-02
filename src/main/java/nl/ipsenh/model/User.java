@@ -1,8 +1,11 @@
 package nl.ipsenh.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import nl.ipsenh.View;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.security.Principal;
@@ -13,10 +16,10 @@ import java.sql.Date;
  */
 public class User implements Principal {
 
-    private long id;
-
     @Email
     @NotEmpty
+    @Length(min = 3, max = 255)
+    @JsonView(View.Public.class)
     private String email;
 
     @NotEmpty
@@ -24,9 +27,11 @@ public class User implements Principal {
     private String password;
 
     @NotEmpty
+    @Length(max = 255)
     private String firstName;
 
     @NotEmpty
+    @Length(max = 255)
     private String lastName;
 
     private String insertion;
@@ -35,13 +40,14 @@ public class User implements Principal {
     private Date dateOfBirth;
 
     @NotEmpty
+    @JsonView(View.Private.class)
     private String role;
 
     public User() {}
 
-    public User(long id, String email, String password, String firstName, String insertion, String lastName,
-                Date dateOfBirth, String role) {
-        this.id = id;
+    @JsonCreator
+    public User(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("firstName") String firstName, @JsonProperty("insertion") String insertion, @JsonProperty("lastName")  String lastName,
+        @JsonProperty("dateOfBirth") Date dateOfBirth, @JsonProperty("role") String role) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
@@ -49,92 +55,42 @@ public class User implements Principal {
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.role = role;
-    }
-
-    public User(String email, String password, String firstName, String insertion, String lastName,
-                Date dateOfBirth, String role) {
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.insertion = insertion;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.role = role;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getInsertion() {
         return insertion;
     }
 
-    public void setInsertion(String insertion) {
-        this.insertion = insertion;
-    }
-
     public Date getDateOfBirth() {
         return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public String getRole() {
         return role;
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public boolean hasRole(String requiredRole) {
         return this.role.equals(requiredRole);
     }
 
+    @Override
     public String getName() {
-        return firstName + " " + insertion + " " + lastName;
-    }
-
-    public boolean equals(User user) {
-        return email.equals(user.getEmail());
+        return this.email;
     }
 }
