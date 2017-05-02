@@ -48,4 +48,16 @@ public class ApiConfiguration extends Configuration implements AssetsBundleConfi
     public void setDatabase(DataSourceFactory database) {
         this.database = database;
     }
+
+    public String getAllowedOrigins() {
+        return "http://localhost:3000";
+    }
+
+    public String getAllowedMethods() {
+        return "GET, POST, PUT, DELETE, OPTIONS";
+    }
+
+    public String getAllowedHeaders() {
+        return "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin";
+    }
 }

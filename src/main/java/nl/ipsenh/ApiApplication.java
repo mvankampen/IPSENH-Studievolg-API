@@ -16,9 +16,11 @@ import nl.ipsenh.service.RoleService;
 import nl.ipsenh.service.UserService;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
+import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.skife.jdbi.v2.DBI;
 
 import javax.servlet.DispatcherType;
+import javax.servlet.FilterRegistration;
 import java.util.EnumSet;
 
 /**
@@ -37,6 +39,16 @@ public class ApiApplication extends Application<ApiConfiguration> {
         //Setup database
         final DBIFactory dbiFactory = new DBIFactory();
         final DBI jdbi = dbiFactory.build(environment, configuration.getDatabase(), "postgresql");
+
+        // cors
+        final FilterRegistration.Dynamic cors = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
+
+        //configure CORS parameters
+        cors.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, configuration.getAllowedOrigins());
+        cors.setInitParameter(CrossOriginFilter.ALLOWED_HEADERS_PARAM, configuration.getAllowedHeaders());
+        cors.setInitParameter(CrossOriginFilter.ALLOWED_METHODS_PARAM, configuration.getAllowedMethods());
+        cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
+
 
         //Setup resources
         final UserDAO userDAO = jdbi.onDemand(UserDAO.class);
