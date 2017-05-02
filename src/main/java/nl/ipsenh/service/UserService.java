@@ -33,7 +33,7 @@ public class UserService extends BaseService<User> {
                 user.getEmail(), user.getDateOfBirth(), user.getPassword(), user.getRole());
     }
 
-    public void updateUser(long id, User authenticator, User user) {
+    public void updateUser(long id, User user) {
 //        if(user.hasRole("ADMIN") && !user.equals(user)) {
 //
 //        }

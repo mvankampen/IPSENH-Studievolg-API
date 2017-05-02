@@ -51,7 +51,7 @@ public class UserResource {
     @PUT
     @JsonView(View.Protected.class)
     @Path("/{id}")
-    public void updateUser(@PathParam("id") long id, @Auth User authenticator, User user) {
-        service.updateUser(id, authenticator, user);
+    public void updateUser(@Auth User authenticator, @PathParam("id") long id, User user) {
+        service.updateUser(id, user);
     }
 }
