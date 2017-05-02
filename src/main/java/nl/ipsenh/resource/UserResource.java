@@ -2,6 +2,7 @@ package nl.ipsenh.resource;
 
 import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.annotation.JsonView;
+import io.dropwizard.auth.Auth;
 import nl.ipsenh.View;
 import nl.ipsenh.model.User;
 import nl.ipsenh.service.UserService;
@@ -29,7 +30,7 @@ public class UserResource {
     @GET
     @JsonView(View.Public.class)
     @Timed
-    public Collection<User> getAllUsers() {
+    public Collection<User> getAllUsers(@Auth User user) {
         return service.getAllUsers();
     }
 
@@ -37,21 +38,20 @@ public class UserResource {
     @JsonView(View.Public.class)
     @Path("/{id}")
     @Timed
-    public User getUserById(@PathParam("id") long id) {
+    public User getUserById(@Auth User user, @PathParam("id") long id) {
         return service.getUserById(id);
     }
 
     @POST
     @JsonView(View.Public.class)
     public void insertUser(User user) {
-        System.out.println(user.getEmail());
         service.insertUser(user);
     }
 
     @PUT
-    @JsonView(View.Public.class)
+    @JsonView(View.Protected.class)
     @Path("/{id}")
-    public void updateUser(@PathParam("id") long id, User user) {
-        service.updateUser(id, user);
+    public void updateUser(@PathParam("id") long id, @Auth User authenticator, User user) {
+        service.updateUser(id, authenticator, user);
     }
 }

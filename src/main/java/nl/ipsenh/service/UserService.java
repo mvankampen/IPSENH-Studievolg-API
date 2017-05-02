@@ -24,12 +24,20 @@ public class UserService extends BaseService<User> {
         return requireResult(this.dao.getUserById(id));
     }
 
+    public User getUserByEmail(String email) {
+        return requireResult(this.dao.getUserByEmail(email));
+    }
+
     public void insertUser(User user) {
         dao.insertUser(user.getFirstName(), user.getInsertion(), user.getLastName(),
                 user.getEmail(), user.getDateOfBirth(), user.getPassword(), user.getRole());
     }
 
-    public void updateUser(long id, User user) {
+    public void updateUser(long id, User authenticator, User user) {
+//        if(user.hasRole("ADMIN") && !user.equals(user)) {
+//
+//        }
+
         dao.updateUser(user.getFirstName(), user.getInsertion(), user.getLastName(),
                 user.getEmail(), user.getDateOfBirth(), user.getPassword(), user.getRole(), id);
     }

@@ -22,6 +22,9 @@ public interface UserDAO {
     @SqlQuery("SELECT * FROM user_account WHERE id = :id LIMIT 1")
     public User getUserById(@Bind("id") long id);
 
+    @SqlQuery("SELECT * FROM user_account WHERE email = :email LIMIT 1")
+    public User getUserByEmail(@Bind("email") String email);
+
     @SqlUpdate("INSERT INTO user_account (first_name, insertion, last_name, email, date_of_birth, password, role) VALUES (:first_name, :insertion, :last_name, :email, :date_of_birth, :password, :role)")
     public void insertUser(@Bind("first_name") String firstName, @Bind("insertion") String insertion,
                            @Bind("last_name") String last_name, @Bind("email") String email,

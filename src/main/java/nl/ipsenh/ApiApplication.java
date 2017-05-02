@@ -1,12 +1,16 @@
 package nl.ipsenh;
 
 import io.dropwizard.Application;
+import io.dropwizard.auth.AuthDynamicFeature;
+import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Environment;
+import nl.ipsenh.model.User;
 import nl.ipsenh.persistence.RoleDAO;
 import nl.ipsenh.persistence.UserDAO;
 import nl.ipsenh.resource.RoleResource;
 import nl.ipsenh.resource.UserResource;
+import nl.ipsenh.service.AuthenticationService;
 import nl.ipsenh.service.RoleService;
 import nl.ipsenh.service.UserService;
 import org.eclipse.jetty.servlet.FilterHolder;
@@ -42,7 +46,23 @@ public class ApiApplication extends Application<ApiConfiguration> {
         environment.jersey().register(new UserResource(userService));
         environment.jersey().register(new RoleResource(roleService));
 
+        setupAuthentication(environment, userDAO);
         configureClientFilter(environment);
+    }
+
+    private void setupAuthentication(Environment environment, UserDAO userDAO) {
+        AuthenticationService authenticationService = new AuthenticationService(userDAO);
+        ApiUnauthorizedHandler apiUnauthorizedHandler = new ApiUnauthorizedHandler();
+
+        environment.jersey().register(new AuthDynamicFeature(
+                new BasicCredentialAuthFilter.Builder<User>()
+                        .setAuthenticator(authenticationService)
+                        .setAuthorizer(authenticationService)
+                        .setRealm("Admin privileges are required to access this resource")
+                        .setUnauthorizedHandler(apiUnauthorizedHandler)
+                        .buildAuthFilter())
+        );
+
     }
 
     private void configureClientFilter(Environment environment) {

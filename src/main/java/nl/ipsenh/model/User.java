@@ -5,12 +5,13 @@ import nl.ipsenh.View;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import java.security.Principal;
 import java.sql.Date;
 
 /**
  * Created by Jamie on 13-4-2017.
  */
-public class User {
+public class User implements Principal {
 
     private long id;
 
@@ -123,5 +124,17 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean hasRole(String requiredRole) {
+        return this.role.equals(requiredRole);
+    }
+
+    public String getName() {
+        return firstName + " " + insertion + " " + lastName;
+    }
+
+    public boolean equals(User user) {
+        return email.equals(user.getEmail());
     }
 }
