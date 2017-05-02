@@ -60,6 +60,13 @@ public class UserResource {
         service.updateUser(id, user);
     }
 
+    @PUT
+    @JsonView(View.Protected.class)
+    @Path("update/{email}")
+    public void updatePassword(@PathParam("email") String email, User user) {
+        service.updatePassword(email, user);
+    }
+
     @GET
     @Path("/me")
     @JsonView(View.Private.class)

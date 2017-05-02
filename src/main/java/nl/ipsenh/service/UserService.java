@@ -34,11 +34,11 @@ public class UserService extends BaseService<User> {
     }
 
     public void updateUser(long id, User user) {
-//        if(user.hasRole("ADMIN") && !user.equals(user)) {
-//
-//        }
-
         dao.updateUser(user.getFirstName(), user.getInsertion(), user.getLastName(),
-                user.getEmail(), user.getDateOfBirth(), user.getPassword(), user.getRole(), id);
+                user.getEmail(), user.getDateOfBirth(), user.getRole(), id);
+    }
+
+    public void updatePassword(String email, User user) {
+        dao.updatePassword(email, user.getPassword());
     }
 }
