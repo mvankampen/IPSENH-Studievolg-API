@@ -16,19 +16,19 @@ public class Restriction {
     private String courseCode;
 
     @JsonView(View.Public.class)
-    private String[] requirements;
+    private String requirement;
 
     @JsonCreator
-    public Restriction(@JsonProperty("courseCode") String courseCode, String[] requirements) {
+    public Restriction(@JsonProperty("courseCode") String courseCode, @JsonProperty("requirement") String requirement) {
         this.courseCode = courseCode;
-        this.requirements = requirements;
+        this.requirement = requirement;
     }
 
     public String getCourseCode() {
         return courseCode;
     }
 
-    public String[] getRequirements() {
-        return requirements;
+    public String getRequirement() {
+        return requirement;
     }
 }

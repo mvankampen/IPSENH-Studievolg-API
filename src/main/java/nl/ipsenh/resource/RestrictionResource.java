@@ -38,7 +38,22 @@ public class RestrictionResource {
     @Path("/{code}")
     @JsonView(View.Protected.class)
     @RolesAllowed("admin,moduleleider,cursist")
-    public Restriction getRestrictionByCode(@PathParam("code") String code) {
+    public Collection<Restriction> getRestrictionByCode(@PathParam("code") String code) {
         return service.getRestrictionByCode(code);
+    }
+
+    @POST
+    @JsonView(View.Protected.class)
+    @RolesAllowed("admin,moduleleider")
+    public void insertRestriction(Restriction restriction) {
+        service.insertRestriction(restriction);
+    }
+
+    @PUT
+    @Path("/{code}")
+    @JsonView(View.Protected.class)
+    @RolesAllowed("admin,moduleleider")
+    public void updateRestriction(@PathParam("code") String code, Restriction restriction) {
+        service.updateRestriction(restriction, code);
     }
 }
