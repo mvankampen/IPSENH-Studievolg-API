@@ -2,6 +2,7 @@ package nl.ipsenh.service;
 
 import nl.ipsenh.persistence.RoleDAO;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Collection;
 
 /**
@@ -15,6 +16,7 @@ public class RoleService extends BaseService<String> {
         this.dao = roleDAO;
     }
 
+    @RolesAllowed("admin")
     public Collection<String> getAllRoles() {
         return dao.getAll();
     }

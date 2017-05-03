@@ -8,6 +8,7 @@ import nl.ipsenh.model.User;
 import nl.ipsenh.persistence.UserDAO;
 
 import javax.inject.Inject;
+import java.util.Arrays;
 import java.util.Optional;
 
 
@@ -34,7 +35,6 @@ public class AuthenticationService implements Authenticator<BasicCredentials, Us
     }
 
     public boolean authorize(User user, String roleName) {
-        System.out.println("Authorize was called!");
-        return user.hasRole(roleName);
+        return Arrays.asList(roleName.split(",")).contains(user.getRole());
     }
 }

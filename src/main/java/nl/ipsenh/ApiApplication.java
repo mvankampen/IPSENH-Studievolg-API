@@ -7,11 +7,14 @@ import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Environment;
 import nl.ipsenh.model.User;
+import nl.ipsenh.persistence.CourseDAO;
 import nl.ipsenh.persistence.RoleDAO;
 import nl.ipsenh.persistence.UserDAO;
+import nl.ipsenh.resource.CourseResource;
 import nl.ipsenh.resource.RoleResource;
 import nl.ipsenh.resource.UserResource;
 import nl.ipsenh.service.AuthenticationService;
+import nl.ipsenh.service.CourseService;
 import nl.ipsenh.service.RoleService;
 import nl.ipsenh.service.UserService;
 import org.eclipse.jetty.servlet.FilterHolder;
@@ -53,12 +56,15 @@ public class ApiApplication extends Application<ApiConfiguration> {
         //Setup resources
         final UserDAO userDAO = jdbi.onDemand(UserDAO.class);
         final RoleDAO roleDAO = jdbi.onDemand(RoleDAO.class);
+        final CourseDAO courseDAO = jdbi.onDemand(CourseDAO.class);
 
         final UserService userService = new UserService(userDAO);
         final RoleService roleService = new RoleService(roleDAO);
+        final CourseService courseService = new CourseService(courseDAO);
 
         environment.jersey().register(new UserResource(userService));
         environment.jersey().register(new RoleResource(roleService));
+        environment.jersey().register(new CourseResource(courseService));
 
         setupAuthentication(environment, userDAO);
         configureClientFilter(environment);
