@@ -6,12 +6,17 @@ import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Environment;
+import nl.ipsenh.model.ABRequirement;
 import nl.ipsenh.model.User;
+import nl.ipsenh.persistence.ABRequirementDAO;
 import nl.ipsenh.persistence.CourseDAO;
+import nl.ipsenh.persistence.CoursePassedDAO;
+import nl.ipsenh.persistence.EnrollmentDAO;
 import nl.ipsenh.persistence.RestrictionDAO;
 import nl.ipsenh.persistence.RoleDAO;
 import nl.ipsenh.persistence.UserDAO;
 import nl.ipsenh.resource.CourseResource;
+import nl.ipsenh.resource.EnrollmentResource;
 import nl.ipsenh.resource.RestrictionResource;
 import nl.ipsenh.resource.RoleResource;
 import nl.ipsenh.resource.UserResource;
@@ -57,16 +62,24 @@ public class ApiApplication extends Application<ApiConfiguration> {
         final RoleDAO roleDAO = jdbi.onDemand(RoleDAO.class);
         final CourseDAO courseDAO = jdbi.onDemand(CourseDAO.class);
         final RestrictionDAO restrictionDAO = jdbi.onDemand(RestrictionDAO.class);
+        final ABRequirementDAO abRequirementDAO = jdbi.onDemand(ABRequirementDAO.class);
+        final CoursePassedDAO coursePassedDAO = jdbi.onDemand(CoursePassedDAO.class);
+        final EnrollmentDAO enrollmentDAO = jdbi.onDemand(EnrollmentDAO.class);
+
 
         final UserService userService = new UserService(userDAO);
         final RoleService roleService = new RoleService(roleDAO);
         final CourseService courseService = new CourseService(courseDAO);
         final RestrictionService restrictionService = new RestrictionService(restrictionDAO);
+        final ABRequirementService abRequirementService = new ABRequirementService(abRequirementDAO);
+        final CoursePassedService coursePassedService = new CoursePassedService(coursePassedDAO);
+        final EnrollmentService enrollmentService = new EnrollmentService(restrictionService, abRequirementService, coursePassedService, courseService, enrollmentDAO);
 
         environment.jersey().register(new UserResource(userService));
         environment.jersey().register(new RoleResource(roleService));
         environment.jersey().register(new CourseResource(courseService));
         environment.jersey().register(new RestrictionResource(restrictionService));
+        environment.jersey().register(new EnrollmentResource(enrollmentService));
 
         setupAuthentication(environment, userDAO);
         configureClientFilter(environment);

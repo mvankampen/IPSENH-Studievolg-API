@@ -1,5 +1,6 @@
 package nl.ipsenh.service;
 
+import nl.ipsenh.model.Course;
 import nl.ipsenh.model.Restriction;
 import nl.ipsenh.persistence.RestrictionDAO;
 
@@ -24,17 +25,11 @@ public class RestrictionService extends BaseService<Restriction> {
     }
 
     public Collection<Restriction> getRestrictionByCode(String code) {
-//        Collection<Restriction> restrictions = dao.getRestrictionByCode(code);
-//        ArrayList<String> requirements = new ArrayList<>();
-//        String courseCode = "";
-//        for(Restriction restriction : restrictions) {
-//            courseCode = restriction.getCourseCode();
-//            for(String requirement : restriction.getRequirements()) {
-//                requirements.add(requirement);
-//            }
-//        }
-
         return dao.getRestrictionByCode(code);
+    }
+
+    public Collection<Restriction> getRestrictionByCourse(Course course) {
+        return dao.getRestrictionByCourse(course);
     }
 
     public void insertRestriction(Restriction restriction) {

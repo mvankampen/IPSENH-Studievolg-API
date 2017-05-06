@@ -15,6 +15,6 @@ public class RestrictionMapper implements ResultSetMapper<Restriction> {
 
     @Override
     public Restriction map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {
-        return new Restriction(resultSet.getString("course_code"), resultSet.getString("requirement"));
+        return new Restriction(resultSet.getString("course"), resultSet.getString("restriction"));
     }
 }

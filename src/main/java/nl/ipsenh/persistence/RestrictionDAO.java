@@ -1,6 +1,7 @@
 package nl.ipsenh.persistence;
 
 import nl.ipsenh.mapper.RestrictionMapper;
+import nl.ipsenh.model.Course;
 import nl.ipsenh.model.Restriction;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
@@ -19,8 +20,11 @@ public interface RestrictionDAO {
     @SqlQuery("SELECT * FROM course_restriction")
     Collection<Restriction> getAll();
 
-    @SqlQuery("SELECT * FROM course_restriction WHERE course_code = :code")
+    @SqlQuery("SELECT * FROM course_restriction WHERE course = :code")
     Collection<Restriction> getRestrictionByCode(@Bind("code") String code);
+
+    @SqlQuery("SELECT * FROM course_restriction WHERE course = :code")
+    Collection<Restriction> getRestrictionByCourse(@BindBean Course course);
 
     @SqlUpdate("INSERT INTO course_restriction (course_code, requirement) VALUES (:courseCode, :requirement)")
     void insertRestriction(@BindBean Restriction restriction);
