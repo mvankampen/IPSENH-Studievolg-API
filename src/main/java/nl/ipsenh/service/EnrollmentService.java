@@ -54,12 +54,12 @@ public class EnrollmentService {
     // courses need to be gotten to validate with a correct AND UNMODIFIED course object!
     Course course = courseService.getCourseByCode(courseCode);
     Collection<Restriction> restrictions = restrictionService.getRestrictionByCourse(course);
+    verifyEnrollment(user, course);
 
     for (Restriction restriction: restrictions) {
       runValidation(restriction, course, user);
     }
 
-    verifyEnrollment(user, course);
     enrollmentDAO.enroll(user.getEmail(), course.getCode());
   }
 
