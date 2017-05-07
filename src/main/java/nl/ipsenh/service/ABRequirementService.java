@@ -9,13 +9,21 @@ import nl.ipsenh.persistence.ABRequirementDAO;
  * Created by Lorenzo Jokhan on 05/05/2017.
  */
 public class ABRequirementService {
-  private ABRequirementDAO dao;
 
+  private ABRequirementDAO abRequirementDAO;
+
+  /**
+   * @param abRequirementDAO implementation of interface Database
+   */
   public ABRequirementService(ABRequirementDAO abRequirementDAO) {
-    this.dao = abRequirementDAO;
+    this.abRequirementDAO = abRequirementDAO;
   }
 
+  /**
+   * @param course {@link Course} object
+   * @return {@link Collection} of {@link ABRequirement}
+   */
   public Collection<ABRequirement> getRequirements(Course course) {
-    return this.dao.getABRestrictionsByCourse(course);
+    return this.abRequirementDAO.getABRestrictionsByCourse(course);
   }
 }

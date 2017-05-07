@@ -12,7 +12,8 @@ import org.skife.jdbi.v2.tweak.ResultSetMapper;
 public class ABRequirementMapper implements ResultSetMapper<ABRequirement> {
 
   @Override
-  public ABRequirement map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {
+  public ABRequirement map(int i, ResultSet resultSet, StatementContext statementContext)
+      throws SQLException {
     return new ABRequirement(resultSet.getString("course"), resultSet.getString("required_course"));
   }
 }

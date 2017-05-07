@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * Created by Lorenzo Jokhan on 05/05/2017.
  */
 public class ABRequirement {
+
   @NotEmpty
   @JsonView(View.Public.class)
   private String course;
@@ -18,7 +19,8 @@ public class ABRequirement {
   private String requiredCourse;
 
   @JsonCreator
-  public ABRequirement(@JsonProperty("course") String course, @JsonProperty("requiredCourse") String requiredCourse) {
+  public ABRequirement(@JsonProperty("course") String course,
+      @JsonProperty("requiredCourse") String requiredCourse) {
     this.course = course;
     this.requiredCourse = requiredCourse;
   }

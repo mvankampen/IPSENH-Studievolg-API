@@ -10,7 +10,8 @@ import nl.ipsenh.model.Course;
 /**
  * Created by Lorenzo Jokhan on 05/05/2017.
  */
-public class DateRestriction implements CourseRestriction {
+public class DateRestriction implements Restriction {
+
   private Course course;
 
   public DateRestriction(Course course) {
@@ -25,8 +26,10 @@ public class DateRestriction implements CourseRestriction {
     // TODO discuss criteria when a course can`t be joined
     if (compareResult != -1) {
       throw new WebApplicationException(
-        Response.status(Status.FORBIDDEN).entity("The course: " + course.getCode() + " cannot be joined at the current time").type(
-        MediaType.TEXT_PLAIN).build());
+          Response.status(Status.FORBIDDEN)
+              .entity("The course: " + course.getCode() + " cannot be joined at the current time")
+              .type(
+                  MediaType.TEXT_PLAIN).build());
     }
   }
 }

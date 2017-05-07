@@ -20,6 +20,7 @@ import nl.ipsenh.service.EnrollmentService;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class EnrollmentResource {
+
   private final EnrollmentService service;
 
   public EnrollmentResource(EnrollmentService service) {

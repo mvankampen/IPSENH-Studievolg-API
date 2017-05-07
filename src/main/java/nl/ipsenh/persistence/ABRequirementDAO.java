@@ -14,7 +14,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 @RegisterMapper(ABRequirementMapper.class)
 public interface ABRequirementDAO {
 
-   @SqlQuery("SELECT * FROM ab_restriction WHERE course = :code")
-    Collection<ABRequirement> getABRestrictionsByCourse(@BindBean Course course);
+  @SqlQuery("SELECT * FROM ab_restriction WHERE course = :code")
+  Collection<ABRequirement> getABRestrictionsByCourse(@BindBean Course course);
 
 }

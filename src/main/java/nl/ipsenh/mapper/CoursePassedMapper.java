@@ -12,7 +12,8 @@ import org.skife.jdbi.v2.tweak.ResultSetMapper;
 public class CoursePassedMapper implements ResultSetMapper<CoursePassed> {
 
   @Override
-  public CoursePassed map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {
+  public CoursePassed map(int i, ResultSet resultSet, StatementContext statementContext)
+      throws SQLException {
     return new CoursePassed(resultSet.getString("course"), resultSet.getString("user_email"));
   }
 }

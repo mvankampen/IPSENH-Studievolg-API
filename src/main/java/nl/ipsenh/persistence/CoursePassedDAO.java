@@ -1,4 +1,5 @@
 package nl.ipsenh.persistence;
+
 import nl.ipsenh.mapper.CoursePassedMapper;
 import nl.ipsenh.model.CoursePassed;
 import nl.ipsenh.model.User;

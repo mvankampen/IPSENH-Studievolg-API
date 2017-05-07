@@ -15,13 +15,15 @@ import nl.ipsenh.service.CoursePassedService;
 /**
  * Created by Lorenzo Jokhan on 05/05/2017.
  */
-public class ABRestriction implements CourseRestriction {
+public class ABRestriction implements Restriction {
+
   private Course course;
   private ABRequirementService abRequirementService;
   private CoursePassedService coursePassedService;
   private User user;
 
-  public ABRestriction(Course course, ABRequirementService service, CoursePassedService coursePassedService, User user) {
+  public ABRestriction(Course course, ABRequirementService service,
+      CoursePassedService coursePassedService, User user) {
     this.course = course;
     this.abRequirementService = service;
     this.coursePassedService = coursePassedService;
@@ -33,12 +35,14 @@ public class ABRestriction implements CourseRestriction {
   public void validate() {
     Collection<ABRequirement> requirements = abRequirementService.getRequirements(course);
 
-    for (ABRequirement requirement: requirements) {
-      CoursePassed coursePassed = this.coursePassedService.getPassedCourse(requirement.getRequiredCourse(), user);
+    for (ABRequirement requirement : requirements) {
+      CoursePassed coursePassed = this.coursePassedService
+          .getPassedCourse(requirement.getRequiredCourse(), user);
 
-      if(coursePassed == null) {
+      if (coursePassed == null) {
         throw new WebApplicationException(Response.status(Status.FORBIDDEN)
-            .entity("Restriction " + requirement.getRequiredCourse() + " not met of " + requirement.getCourse())
+            .entity("Restriction " + requirement.getRequiredCourse() + " not met of " + requirement
+                .getCourse())
             .type(MediaType.TEXT_PLAIN).build());
       }
     }

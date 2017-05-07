@@ -1,34 +1,55 @@
 package nl.ipsenh.service;
 
+import java.util.Collection;
 import nl.ipsenh.model.Course;
 import nl.ipsenh.persistence.CourseDAO;
 
-import java.util.Collection;
-
 /**
- * Created by Jamie on 3-5-2017.
+ * @author Jamie Kalloe
+ * @version 1.0
+ * @since 2017-05-03
  */
 public class CourseService extends BaseService<Course> {
 
-    private final CourseDAO dao;
 
-    public CourseService(CourseDAO dao) {
-        this.dao = dao;
-    }
+  private final CourseDAO courseDAO;
 
-    public Collection<Course> getAllCourses() {
-        return dao.getAll();
-    }
+  /**
+   * Constructor
+   *
+   * @param courseDAO implementation of interface Database
+   */
+  public CourseService(CourseDAO courseDAO) {
+    this.courseDAO = courseDAO;
+  }
 
-    public Course getCourseByCode(String code) {
-        return requireResult(dao.getCourseByCode(code));
-    }
+  /**
+   * @return {@link Collection} of {@link Course}
+   */
+  public Collection<Course> getAllCourses() {
+    return courseDAO.getAll();
+  }
 
-    public void insertCourse(Course course) {
-        dao.insertCourse(course);
-    }
+  /**
+   * @param courseCode path param of courseCode
+   * @return {@link Course} object by giving courseCode
+   */
+  public Course getCourseByCode(String courseCode) {
+    return requireResult(courseDAO.getCourseByCode(courseCode));
+  }
 
-    public void updateCourse(Course course, String courseCode) {
-        dao.updateCourse(course, courseCode);
-    }
+  /**
+   * @param course {@link Course} object to insert into Database
+   */
+  public void insertCourse(Course course) {
+    courseDAO.insertCourse(course);
+  }
+
+  /**
+   * @param course {@link Course} object
+   * @param courseCode path param courseCode to update current Course object.
+   */
+  public void updateCourse(Course course, String courseCode) {
+    courseDAO.updateCourse(course, courseCode);
+  }
 }
