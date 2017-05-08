@@ -35,7 +35,7 @@ public class RestrictionResource {
   @GET
   @Timed
   @JsonView(View.Protected.class)
-  @RolesAllowed("admin, moduleleider, cursist")
+  @RolesAllowed("admin,moduleleider,cursist")
   public Collection<CourseRestriction> getAllRestrictions() {
     return restrictionService.getAllRestrictions();
   }
@@ -44,7 +44,7 @@ public class RestrictionResource {
   @Timed
   @Path("/{courseCode}")
   @JsonView(View.Protected.class)
-  @RolesAllowed("admin, moduleleider, cursist")
+  @RolesAllowed("admin,moduleleider,cursist")
   public Collection<CourseRestriction> getRestrictionByCode(
       @PathParam("courseCode") String courseCode) {
     return restrictionService.getRestrictionByCourseCode(courseCode);
@@ -52,7 +52,7 @@ public class RestrictionResource {
 
   @POST
   @JsonView(View.Protected.class)
-  @RolesAllowed("admin, moduleleider")
+  @RolesAllowed("admin,moduleleider")
   public void insertRestriction(CourseRestriction restriction) {
     restrictionService.insertRestriction(restriction);
   }
@@ -60,7 +60,7 @@ public class RestrictionResource {
   @PUT
   @Path("/{code}")
   @JsonView(View.Protected.class)
-  @RolesAllowed("admin, moduleleider")
+  @RolesAllowed("admin,moduleleider")
   public void updateRestriction(@PathParam("code") String code, CourseRestriction restriction) {
     restrictionService.updateRestriction(restriction, code);
   }

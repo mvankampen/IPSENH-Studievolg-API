@@ -31,7 +31,7 @@ public class EnrollmentResource {
    * Checks must only be done on objects retrieved from the database.*/
   @POST
   @JsonView(View.Protected.class)
-  @RolesAllowed("admin, moduleleider, cursist")
+  @RolesAllowed("admin,moduleleider,cursist")
   @Path("/{courseCode}")
   public void enroll(@Auth User user, @PathParam("courseCode") String courseCode) {
     service.enrollToCourse(user, courseCode);

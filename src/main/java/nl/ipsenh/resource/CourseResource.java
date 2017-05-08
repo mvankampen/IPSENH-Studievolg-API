@@ -32,7 +32,7 @@ public class CourseResource {
 
   @GET
   @JsonView(View.Protected.class)
-  @RolesAllowed("moduleleider, cursist, admin")
+  @RolesAllowed("moduleleider,cursist,admin")
   @Timed
   public Collection<Course> getAllCourses() {
     return service.getAllCourses();
@@ -41,7 +41,7 @@ public class CourseResource {
   @GET
   @Path("/{code}")
   @JsonView(View.Protected.class)
-  @RolesAllowed("moduleleider, cursist, admin")
+  @RolesAllowed("moduleleider,cursist,admin")
   @Timed
   public Course getCourseByCode(@PathParam("code") String courseCode) {
     return service.getCourseByCode(courseCode);
@@ -49,7 +49,7 @@ public class CourseResource {
 
   @POST
   @JsonView(View.Protected.class)
-  @RolesAllowed("admin, moduleleider")
+  @RolesAllowed("admin,moduleleider")
   public void insertCourse(Course course) {
     service.insertCourse(course);
   }
@@ -57,7 +57,7 @@ public class CourseResource {
   @PUT
   @Path("/{code}")
   @JsonView(View.Protected.class)
-  @RolesAllowed("admin, moduleleider")
+  @RolesAllowed("admin,moduleleider")
   public void updateCourse(@PathParam("code") String courseCode, Course course) {
     service.updateCourse(course, courseCode);
   }
