@@ -1,6 +1,7 @@
 apiName: "IPSENH Studievolg API"
 
 server:
+  registerDefaultExceptionMappers: false
   rootPath: /api/*
   adminContextPath: /admin
   
@@ -12,7 +13,7 @@ database:
   user: postgres
 
   # the password
-  password: admin
+  password: root
 
   # the JDBC URL
   url: jdbc:postgresql://localhost:5432/IPSENH-Studievolg
