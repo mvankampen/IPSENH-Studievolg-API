@@ -1,6 +1,7 @@
 apiName: "IPSENH Studievolg API"
 
 server:
+  registerDefaultExceptionMappers: false
   rootPath: /api/*
   adminContextPath: /admin
   

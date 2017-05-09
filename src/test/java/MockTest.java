@@ -6,9 +6,9 @@ import org.junit.Test;
  */
 public class MockTest {
 
-    @Test
-    public void fakeTestTrue() {
-        String text = "HelloWorld";
-        Assert.assertEquals("HelloWorld", text);
-    }
+  @Test
+  public void fakeTestTrue() {
+    String text = "HelloWorld";
+    Assert.assertEquals("HelloWorld", text);
+  }
 }
