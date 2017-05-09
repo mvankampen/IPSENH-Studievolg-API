@@ -9,19 +9,25 @@ import io.dropwizard.setup.Environment;
 import java.util.EnumSet;
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
+import javax.ws.rs.core.MediaType;
+import nl.ipsenh.mapper.JsonProcessingExceptionMapper;
+import nl.ipsenh.mapper.RuntimeExceptionMapper;
 import nl.ipsenh.model.User;
 import nl.ipsenh.persistence.ABRequirementDAO;
 import nl.ipsenh.persistence.CourseDAO;
+import nl.ipsenh.persistence.CourseOwnerDAO;
 import nl.ipsenh.persistence.CoursePassedDAO;
 import nl.ipsenh.persistence.CourseRestrictionDAO;
 import nl.ipsenh.persistence.EnrollmentDAO;
 import nl.ipsenh.persistence.UserDAO;
+import nl.ipsenh.resource.CourseOwnerResource;
 import nl.ipsenh.resource.CourseResource;
 import nl.ipsenh.resource.EnrollmentResource;
 import nl.ipsenh.resource.RestrictionResource;
 import nl.ipsenh.resource.UserResource;
 import nl.ipsenh.service.ABRequirementService;
 import nl.ipsenh.service.AuthenticationService;
+import nl.ipsenh.service.CourseOwnerService;
 import nl.ipsenh.service.CoursePassedService;
 import nl.ipsenh.service.CourseService;
 import nl.ipsenh.service.EnrollmentService;
@@ -46,6 +52,8 @@ public class ApiApplication extends Application<ApiConfiguration> {
   @Override
   public void run(ApiConfiguration configuration, Environment environment) throws Exception {
     System.out.println("Set API name to: " + configuration.getApiName());
+    environment.jersey().register(new JsonProcessingExceptionMapper());
+    environment.jersey().register(new RuntimeExceptionMapper());
 
     //Setup database
     final DBIFactory dbiFactory = new DBIFactory();
@@ -71,6 +79,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
     final ABRequirementDAO abRequirementDAO = jdbi.onDemand(ABRequirementDAO.class);
     final CoursePassedDAO coursePassedDAO = jdbi.onDemand(CoursePassedDAO.class);
     final EnrollmentDAO enrollmentDAO = jdbi.onDemand(EnrollmentDAO.class);
+    final CourseOwnerDAO courseOwnerDAO = jdbi.onDemand(CourseOwnerDAO.class);
 
     final UserService userService = new UserService(userDAO);
     final CourseService courseService = new CourseService(courseDAO);
@@ -79,11 +88,13 @@ public class ApiApplication extends Application<ApiConfiguration> {
     final CoursePassedService coursePassedService = new CoursePassedService(coursePassedDAO);
     final EnrollmentService enrollmentService = new EnrollmentService(restrictionService,
         abRequirementService, coursePassedService, courseService, enrollmentDAO);
+    final CourseOwnerService courseOwnerService = new CourseOwnerService(courseOwnerDAO,userService);
 
     environment.jersey().register(new UserResource(userService));
     environment.jersey().register(new CourseResource(courseService));
     environment.jersey().register(new RestrictionResource(restrictionService));
     environment.jersey().register(new EnrollmentResource(enrollmentService));
+    environment.jersey().register(new CourseOwnerResource(courseOwnerService));
 
     setupAuthentication(environment, userDAO);
     configureClientFilter(environment);

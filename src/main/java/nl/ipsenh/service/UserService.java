@@ -53,6 +53,7 @@ public class UserService extends BaseService<User> {
    * @return {@link User} object
    */
   public User getUserByEmail(String userEmail) {
-    return this.userDAO.getUserByEmail(userEmail);
+    User user = this.userDAO.getUserByEmail(userEmail);
+    return requireResult(user);
   }
 }
