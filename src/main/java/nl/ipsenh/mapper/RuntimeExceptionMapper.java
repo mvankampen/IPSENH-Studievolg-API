@@ -1,15 +1,16 @@
 package nl.ipsenh.mapper;
 
 import io.dropwizard.jersey.errors.ErrorMessage;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 /**
  * <p>
@@ -23,8 +24,7 @@ import org.slf4j.LoggerFactory;
  * stack traces from a REST API and it makes upgrading and testing the exception mapper hard because comparing against stack
  * trace Strings for equality or near-equality is pretty lame</p>
  */
-@Provider
-public class RuntimeExceptionMapper implements ExceptionMapper<RuntimeException> {
+@Provider public class RuntimeExceptionMapper implements ExceptionMapper<RuntimeException> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RuntimeExceptionMapper.class);
     private static final boolean DEFAULT_SHOW_DETAILS = false;
@@ -41,16 +41,13 @@ public class RuntimeExceptionMapper implements ExceptionMapper<RuntimeException>
         this.mediaType = mediaType;
     }
 
-    @Override
-    public Response toResponse(RuntimeException exception) {
+    @Override public Response toResponse(RuntimeException exception) {
 
         // Build default response
-        Response defaultResponse = Response.serverError()
-                .type(this.mediaType)
-                .entity(new ErrorMessage(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),
-                                         exception.getMessage(),
-                                         this.showDetails ? stackTraceToString(exception) : null))
-                .build();
+        Response defaultResponse = Response.serverError().type(this.mediaType).entity(
+            new ErrorMessage(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),
+                exception.getMessage(), this.showDetails ? stackTraceToString(exception) : null))
+            .build();
 
         // Check for any specific handling
         if (exception instanceof WebApplicationException) {
@@ -63,50 +60,37 @@ public class RuntimeExceptionMapper implements ExceptionMapper<RuntimeException>
         return defaultResponse;
     }
 
-    private Response handleWebApplicationException(RuntimeException exception, Response defaultResponse) {
+    private Response handleWebApplicationException(RuntimeException exception,
+        Response defaultResponse) {
         WebApplicationException webAppException = (WebApplicationException) exception;
 
         // No logging
         if (webAppException.getResponse().getStatus() == 401) {
-            return Response
-                    .status(Response.Status.UNAUTHORIZED)
-                    .type(this.mediaType)
-                    .entity(new ErrorMessage(Response.Status.UNAUTHORIZED.getStatusCode(),
-                                             exception.getMessage(),
-                                             this.showDetails ? stackTraceToString(exception) : null))
-                    .build();
+            return Response.status(Response.Status.UNAUTHORIZED).type(this.mediaType).entity(
+                new ErrorMessage(Response.Status.UNAUTHORIZED.getStatusCode(),
+                    exception.getMessage(),
+                    this.showDetails ? stackTraceToString(exception) : null)).build();
         }
 
         if (webAppException.getResponse().getStatus() == 403) {
-            return Response
-                    .status(Response.Status.FORBIDDEN)
-                    .type(this.mediaType)
-                    .entity(new ErrorMessage(Response.Status.FORBIDDEN.getStatusCode(),
-                                             exception.getMessage(),
-                                             this.showDetails ? stackTraceToString(exception) : null))
-                    .build();
+            return Response.status(Response.Status.FORBIDDEN).type(this.mediaType).entity(
+                new ErrorMessage(Response.Status.FORBIDDEN.getStatusCode(), exception.getMessage(),
+                    this.showDetails ? stackTraceToString(exception) : null)).build();
         }
 
 
         if (webAppException.getResponse().getStatus() == 404) {
-            return Response
-                    .status(Response.Status.NOT_FOUND)
-                    .type(this.mediaType)
-                    .entity(new ErrorMessage(Response.Status.NOT_FOUND.getStatusCode(),
-                                             exception.getMessage(),
-                                             this.showDetails ? stackTraceToString(exception) : null))
-                    .build();
+            return Response.status(Response.Status.NOT_FOUND).type(this.mediaType).entity(
+                new ErrorMessage(Response.Status.NOT_FOUND.getStatusCode(), exception.getMessage(),
+                    this.showDetails ? stackTraceToString(exception) : null)).build();
         }
 
         LOGGER.error(exception.getMessage(), exception);
 
-        Response r = Response
-            .status(webAppException.getResponse().getStatus())
-            .type(this.mediaType)
-            .entity(new ErrorMessage(webAppException.getResponse().getStatus(),
-                                     exception.getMessage(),
-                                     this.showDetails ? stackTraceToString(exception) : null))
-            .build();
+        Response r = Response.status(webAppException.getResponse().getStatus()).type(this.mediaType)
+            .entity(
+                new ErrorMessage(webAppException.getResponse().getStatus(), exception.getMessage(),
+                    this.showDetails ? stackTraceToString(exception) : null)).build();
 
         return r;
 

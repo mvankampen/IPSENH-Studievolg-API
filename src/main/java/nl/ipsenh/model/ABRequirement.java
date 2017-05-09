@@ -11,25 +11,21 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 public class ABRequirement {
 
-  @NotEmpty
-  @JsonView(View.Public.class)
-  private String course;
+    @NotEmpty @JsonView(View.Public.class) private String course;
 
-  @JsonView(View.Public.class)
-  private String requiredCourse;
+    @JsonView(View.Public.class) private String requiredCourse;
 
-  @JsonCreator
-  public ABRequirement(@JsonProperty("course") String course,
-      @JsonProperty("requiredCourse") String requiredCourse) {
-    this.course = course;
-    this.requiredCourse = requiredCourse;
-  }
+    @JsonCreator public ABRequirement(@JsonProperty("course") String course,
+        @JsonProperty("requiredCourse") String requiredCourse) {
+        this.course = course;
+        this.requiredCourse = requiredCourse;
+    }
 
-  public String getCourse() {
-    return course;
-  }
+    public String getCourse() {
+        return course;
+    }
 
-  public String getRequiredCourse() {
-    return requiredCourse;
-  }
+    public String getRequiredCourse() {
+        return requiredCourse;
+    }
 }

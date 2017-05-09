@@ -11,20 +11,20 @@ import nl.ipsenh.persistence.CoursePassedDAO;
  */
 public class CoursePassedService {
 
-  private CoursePassedDAO coursePassedDAO;
+    private CoursePassedDAO coursePassedDAO;
 
-  /**
-   * @param coursePassedDAO implementation of interface Database
-   */
-  public CoursePassedService(CoursePassedDAO coursePassedDAO) {
-    this.coursePassedDAO = coursePassedDAO;
-  }
+    /**
+     * @param coursePassedDAO implementation of interface Database
+     */
+    public CoursePassedService(CoursePassedDAO coursePassedDAO) {
+        this.coursePassedDAO = coursePassedDAO;
+    }
 
-  /**
-   * @param user {@link User} current User object
-   * @return {@link CoursePassed} object
-   */
-  public CoursePassed getPassedCourse(String requiredCourse, User user) {
-    return this.coursePassedDAO.getPassedCourse(requiredCourse, user);
-  }
+    /**
+     * @param user {@link User} current User object
+     * @return {@link CoursePassed} object
+     */
+    public CoursePassed getPassedCourse(String requiredCourse, User user) {
+        return this.coursePassedDAO.getPassedCourse(requiredCourse, user);
+    }
 }

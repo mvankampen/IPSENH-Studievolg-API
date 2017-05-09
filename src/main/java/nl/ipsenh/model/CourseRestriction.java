@@ -13,28 +13,24 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 public class CourseRestriction {
 
-  @NotEmpty
-  @JsonView(View.Public.class)
-  private String courseCode;
+    @NotEmpty @JsonView(View.Public.class) private String courseCode;
 
-  @JsonView(View.Public.class)
-  private String restrictionType;
+    @JsonView(View.Public.class) private String restrictionType;
 
-  @JsonCreator
-  /**
-   * @param coursecode: contains course code
-   * @param restrictionType: type of restriction
-   */
-  public CourseRestriction(@JsonProperty("courseCode") String courseCode,
-      @JsonProperty("restrictionType") String restrictionType) {
-    this.courseCode = courseCode;
-    this.restrictionType = restrictionType;
-  }
+    @JsonCreator
+    /**
+     * @param coursecode: contains course code
+     * @param restrictionType: type of restriction
+     */ public CourseRestriction(@JsonProperty("courseCode") String courseCode,
+        @JsonProperty("restrictionType") String restrictionType) {
+        this.courseCode = courseCode;
+        this.restrictionType = restrictionType;
+    }
 
-  /**
-   * @return String of restriction type
-   */
-  public String getRestrictionType() {
-    return restrictionType;
-  }
+    /**
+     * @return String of restriction type
+     */
+    public String getRestrictionType() {
+        return restrictionType;
+    }
 }

@@ -5,9 +5,9 @@ package nl.ipsenh.restrictions;
  */
 public interface Restriction {
 
-  /**
-   * Validates if the restriction has passed
-   */
-  void validate();
+    /**
+     * Validates if the restriction has passed
+     */
+    void validate();
 
 }

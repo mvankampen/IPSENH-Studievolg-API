@@ -1,9 +1,10 @@
 package nl.ipsenh.service;
 
-import java.util.Collection;
 import nl.ipsenh.model.Course;
 import nl.ipsenh.model.CourseRestriction;
 import nl.ipsenh.persistence.CourseRestrictionDAO;
+
+import java.util.Collection;
 
 /**
  * @author Jamie Kalloe
@@ -12,40 +13,39 @@ import nl.ipsenh.persistence.CourseRestrictionDAO;
  */
 public class RestrictionService extends BaseService<CourseRestriction> {
 
-  private final CourseRestrictionDAO courseRestrictionDAO;
+    private final CourseRestrictionDAO courseRestrictionDAO;
 
-  /**
-   * @param courseRestrictionDAO implementation of interface Database
-   */
-  public RestrictionService(CourseRestrictionDAO courseRestrictionDAO) {
-    this.courseRestrictionDAO = courseRestrictionDAO;
-  }
+    /**
+     * @param courseRestrictionDAO implementation of interface Database
+     */
+    public RestrictionService(CourseRestrictionDAO courseRestrictionDAO) {
+        this.courseRestrictionDAO = courseRestrictionDAO;
+    }
 
-  /**
-   * @return {@link Collection} of {@link CourseRestriction}
-   */
-  public Collection<CourseRestriction> getAllRestrictions() {
-    return courseRestrictionDAO.getAllRestriction();
-  }
+    /**
+     * @return {@link Collection} of {@link CourseRestriction}
+     */
+    public Collection<CourseRestriction> getAllRestrictions() {
+        return courseRestrictionDAO.getAllRestriction();
+    }
 
-  /**
-   *
-   * @param code
-   * @return
-   */
-  public Collection<CourseRestriction> getRestrictionByCourseCode(String code) {
-    return courseRestrictionDAO.getRestrictionByCourseCode(code);
-  }
+    /**
+     * @param code
+     * @return
+     */
+    public Collection<CourseRestriction> getRestrictionByCourseCode(String code) {
+        return courseRestrictionDAO.getRestrictionByCourseCode(code);
+    }
 
-  public Collection<CourseRestriction> getRestrictionByCourse(Course course) {
-    return courseRestrictionDAO.getRestrictionByCourse(course);
-  }
+    public Collection<CourseRestriction> getRestrictionByCourse(Course course) {
+        return courseRestrictionDAO.getRestrictionByCourse(course);
+    }
 
-  public void insertRestriction(CourseRestriction restriction) {
-    courseRestrictionDAO.insertRestriction(restriction);
-  }
+    public void insertRestriction(CourseRestriction restriction) {
+        courseRestrictionDAO.insertRestriction(restriction);
+    }
 
-  public void updateRestriction(CourseRestriction restriction, String courseCode) {
-    courseRestrictionDAO.updateRestricion(restriction, courseCode);
-  }
+    public void updateRestriction(CourseRestriction restriction, String courseCode) {
+        courseRestrictionDAO.updateRestricion(restriction, courseCode);
+    }
 }

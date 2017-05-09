@@ -16,41 +16,32 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 public class CourseOwner {
 
-  @NotEmpty
-  @Length(min = 3, max = 255)
-  @JsonView(View.Public.class)
-  private String courseCode;
+    @NotEmpty @Length(min = 3, max = 255) @JsonView(View.Public.class) private String courseCode;
 
-  @Email
-  @NotEmpty
-  @Length(min = 3, max = 255)
-  @JsonView(View.Public.class)
-  private String courseLeader;
+    @Email @NotEmpty @Length(min = 3, max = 255) @JsonView(View.Public.class) private String
+        courseLeader;
 
-  /**
-   *
-   * @param courseCode of Course
-   * @param courseLeader of Course
-   */
-  @JsonCreator
-  public CourseOwner(@JsonProperty("courseCode") String courseCode, @JsonProperty("courseLeader") String courseLeader) {
-    this.courseCode = courseCode;
-    this.courseLeader = courseLeader;
-  }
+    /**
+     * @param courseCode   of Course
+     * @param courseLeader of Course
+     */
+    @JsonCreator public CourseOwner(@JsonProperty("courseCode") String courseCode,
+        @JsonProperty("courseLeader") String courseLeader) {
+        this.courseCode = courseCode;
+        this.courseLeader = courseLeader;
+    }
 
-  /**
-   *
-   * @return code of course
-   */
-  public String getCourseCode() {
-    return this.courseCode;
-  }
+    /**
+     * @return code of course
+     */
+    public String getCourseCode() {
+        return this.courseCode;
+    }
 
-  /**
-   *
-   * @return email address of course leader
-   */
-  public String getCourseLeader() {
-    return this.courseLeader;
-  }
+    /**
+     * @return email address of course leader
+     */
+    public String getCourseLeader() {
+        return this.courseLeader;
+    }
 }

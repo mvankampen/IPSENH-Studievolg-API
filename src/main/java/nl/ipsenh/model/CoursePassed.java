@@ -11,25 +11,22 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 public class CoursePassed {
 
-  @NotEmpty
-  @JsonView(View.Public.class)
-  private String course;
+    @NotEmpty @JsonView(View.Public.class) private String course;
 
-  @JsonView(View.Public.class)
-  private String user;
+    @JsonView(View.Public.class) private String user;
 
-  @JsonCreator
-  public CoursePassed(@JsonProperty("course") String course, @JsonProperty("user") String user) {
-    this.course = course;
-    this.user = user;
-  }
+    @JsonCreator
+    public CoursePassed(@JsonProperty("course") String course, @JsonProperty("user") String user) {
+        this.course = course;
+        this.user = user;
+    }
 
-  public String getCourse() {
-    return course;
-  }
+    public String getCourse() {
+        return course;
+    }
 
-  public String getUser() {
-    return user;
-  }
+    public String getUser() {
+        return user;
+    }
 
 }
