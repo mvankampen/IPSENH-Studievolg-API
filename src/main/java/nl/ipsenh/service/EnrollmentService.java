@@ -1,6 +1,8 @@
 package nl.ipsenh.service;
 
 import java.util.Collection;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -84,9 +86,7 @@ public class EnrollmentService {
   private void verifyEnrollment(User user, Course course) {
     EnrolledCourse enrolledCourse = enrollmentDAO.get(user.getEmail(), course.getCode());
     if (enrolledCourse != null) {
-      throw new WebApplicationException(Response.status(Status.FORBIDDEN)
-          .entity("You are already enrolled for this course")
-          .type(MediaType.TEXT_PLAIN).build());
+      throw new ForbiddenException("You are already enrolled for this course");
     }
   }
 
@@ -102,9 +102,7 @@ public class EnrollmentService {
       case "DATE_RESTRICTION":
         return new DateRestriction(course);
       default:
-        throw new WebApplicationException(Response.status(Status.BAD_REQUEST)
-            .entity("Unknown restriction")
-            .type(MediaType.TEXT_PLAIN).build());
+        throw new BadRequestException("Unknown restriction");
     }
   }
 }

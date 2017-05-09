@@ -1,9 +1,6 @@
 package nl.ipsenh.service;
 
-import com.oracle.javafx.jmx.json.JSONException;
 import java.util.Collection;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response.Status;
 import nl.ipsenh.model.User;
 import nl.ipsenh.persistence.UserDAO;
 
@@ -55,12 +52,8 @@ public class UserService extends BaseService<User> {
    * @param userEmail path param userEmail
    * @return {@link User} object
    */
-  public User getUserByEmail(String userEmail) throws JSONException {
+  public User getUserByEmail(String userEmail) {
     User user = this.userDAO.getUserByEmail(userEmail);
-    if (user == null) {
-      throw new WebApplicationException("User not found", Status.FORBIDDEN);
-    }
-
-    return user;
+    return requireResult(user);
   }
 }

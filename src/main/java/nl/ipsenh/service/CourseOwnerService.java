@@ -1,9 +1,7 @@
 package nl.ipsenh.service;
 
-import com.oracle.javafx.jmx.json.JSONException;
 import java.util.Collection;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.ForbiddenException;
 import nl.ipsenh.model.CourseOwner;
 import nl.ipsenh.model.User;
 import nl.ipsenh.persistence.CourseOwnerDAO;
@@ -13,7 +11,7 @@ import nl.ipsenh.persistence.CourseOwnerDAO;
  * @version 1.0
  * @since 2017-05-08
  */
-public class CourseOwnerService {
+public class CourseOwnerService extends BaseService<User>{
 
   private CourseOwnerDAO courseOwnerDAO;
   private UserService userService;
@@ -31,10 +29,10 @@ public class CourseOwnerService {
   /**
    * @param courseOwner {@link CourseOwner} object
    */
-  public void insertCourseOwner(CourseOwner courseOwner) throws JSONException {
-    User courseLeader = this.userService.getUserByEmail(courseOwner.getCourseLeader());
+  public void insertCourseOwner(CourseOwner courseOwner) {
+    User courseLeader = requireResult(this.userService.getUserByEmail(courseOwner.getCourseLeader()));
     if (!courseLeader.hasRole("moduleleider")) {
-      throw new WebApplicationException("User is not a Moduleleider", Status.FORBIDDEN);
+      throw new ForbiddenException("User is not a Moduleleider");
     }
 
     this.courseOwnerDAO.insertCourseOwner(courseOwner);

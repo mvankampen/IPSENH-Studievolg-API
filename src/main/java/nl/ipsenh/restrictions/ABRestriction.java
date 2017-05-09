@@ -1,6 +1,7 @@
 package nl.ipsenh.restrictions;
 
 import java.util.Collection;
+import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -40,10 +41,7 @@ public class ABRestriction implements Restriction {
           .getPassedCourse(requirement.getRequiredCourse(), user);
 
       if (coursePassed == null) {
-        throw new WebApplicationException(Response.status(Status.FORBIDDEN)
-            .entity("Restriction " + requirement.getRequiredCourse() + " not met of " + requirement
-                .getCourse())
-            .type(MediaType.TEXT_PLAIN).build());
+        throw new ForbiddenException("Restriction " + requirement.getRequiredCourse() + " not met of " + requirement.getCourse());
       }
     }
   }
