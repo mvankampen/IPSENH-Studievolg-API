@@ -24,7 +24,7 @@ public class CourseOwnerResource {
     }
 
     @POST @JsonView(View.Protected.class) @RolesAllowed("admin")
-    public void inserCourseOwner(CourseOwner courseOwner) {
+    public void insertCourseOwner(CourseOwner courseOwner) {
         this.courseOwnerService.insertCourseOwner(courseOwner);
     }
 

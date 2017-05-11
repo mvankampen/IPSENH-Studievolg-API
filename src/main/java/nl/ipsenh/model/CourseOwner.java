@@ -46,6 +46,6 @@ public class CourseOwner {
     }
 
     @Override public boolean equals(Object obj) {
-        return (getClass() == obj.getClass());
+        return this.courseLeader.equals(((CourseOwner) obj).getCourseLeader());
     }
 }
