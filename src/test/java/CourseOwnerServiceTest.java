@@ -36,7 +36,7 @@ public class CourseOwnerServiceTest {
 
     private final CourseOwner expectedCourseOwner =
         new CourseOwner("moduleleider@ipsenh.nl", "IAD1");
-    private final User expectedUser = new User("moduleleider@ipsenh.nl", "", "", "", "", null, "");
+    private final User expectedUser = new User("moduleleider@ipsenh.nl", "", "", "", "", null, "moduleleider");
 
     @Before public void setup() {
         when(USER_SERVICE.getUserByEmail(eq("moduleleider@ipsenh.nl"))).thenReturn(expectedUser);
