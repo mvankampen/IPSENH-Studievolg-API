@@ -18,15 +18,15 @@ import java.util.Collection;
     @SqlQuery("SELECT * FROM user_account") public Collection<User> getAll();
 
     @SqlQuery("SELECT * FROM user_account WHERE email = :email LIMIT 1")
-    public User getUserByEmail(@Bind("email") String email);
+    User getUserByEmail(@Bind("email") String email);
 
     @SqlUpdate("INSERT INTO user_account (first_name, insertion, last_name, email, date_of_birth, password, role) VALUES (:firstName, :insertion, :lastName, :email, :dateOfBirth, :password, :role)")
-    public void insertUser(@BindBean User user); //TODO: encrypt password SHA256 (db)
+    void insertUser(@BindBean User user); //TODO: encrypt password SHA256 (db)
 
     @SqlUpdate("UPDATE user_account SET first_name = :firstName, insertion = :insertion, last_name = :lastName, email = :email, date_of_birth = :dateOfBirth, role = :role WHERE email = :userEmail")
-    public void updateUser(@BindBean User user,
+    void updateUser(@BindBean User user,
         @Bind("userEmail") String userEmail); //TODO: encrypt password SHA256 (db))
 
     @SqlUpdate("UPDATE user_account SET password = :password WHERE email = :email")
-    public void updatePassword(@Bind("email") String email, @Bind("password") String password);
+    void updatePassword(@Bind("email") String email, @Bind("password") String password);
 }

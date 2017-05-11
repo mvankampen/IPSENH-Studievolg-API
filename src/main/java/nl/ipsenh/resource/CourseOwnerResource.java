@@ -24,13 +24,18 @@ public class CourseOwnerResource {
     }
 
     @POST @JsonView(View.Protected.class) @RolesAllowed("admin")
-    public void inserCourseOwner(CourseOwner courseOwner) {
+    public void insertCourseOwner(CourseOwner courseOwner) {
         this.courseOwnerService.insertCourseOwner(courseOwner);
     }
 
     @GET @JsonView(View.Protected.class) @RolesAllowed("admin") @Timed
     public Collection<CourseOwner> getAllCourseOwners() {
         return this.courseOwnerService.getAllCourseOwners();
+    }
+
+    @GET @Path("/{email}") @JsonView(View.Protected.class) @RolesAllowed("admin") @Timed
+    public CourseOwner getCourseOwnerByEmail(@PathParam("email") String email) {
+        return this.courseOwnerService.getCourseOwnerByEmail(email);
     }
 
     //  @GET

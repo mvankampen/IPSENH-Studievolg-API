@@ -25,6 +25,9 @@ import java.util.Collection;
     @SqlQuery("SELECT * FROM course_owner WHERE user_email = :courseLeader")
     Collection<CourseOwner> getAllCoursesByOwner(@Bind("courseLeader") String courseLeader);
 
+    @SqlQuery("SELECT * FROM course_owner WHERE user_email = :email LIMIT 1")
+    CourseOwner getCourseOwnerByEmail(@Bind("email") String email);
+
     //  @SqlQuery("SELECT * FROM course")
     //  Collection<Course> getAll();
     //
