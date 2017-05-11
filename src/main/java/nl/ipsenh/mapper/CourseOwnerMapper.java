@@ -16,7 +16,7 @@ public class CourseOwnerMapper implements ResultSetMapper<CourseOwner> {
 
     @Override public CourseOwner map(int i, ResultSet resultSet, StatementContext statementContext)
         throws SQLException {
-        return new CourseOwner(resultSet.getString("course_code"),
-            resultSet.getString("user_email"));
+        return new CourseOwner(resultSet.getString("user_email"),
+            resultSet.getString("course_code"));
     }
 }

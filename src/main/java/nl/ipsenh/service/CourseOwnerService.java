@@ -48,4 +48,7 @@ public class CourseOwnerService extends BaseService<User> {
         return this.courseOwnerDAO.getAllCourseOwners();
     }
 
+    public CourseOwner getCourseOwnerByEmail(String email) {
+        return this.courseOwnerDAO.getCourseOwnerByEmail(email);
+    }
 }

@@ -2,19 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9077fa7d-a340-4f64-9281-dc666431b8dd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nl/ipsenh/resource/ABRestrictionResource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ABRestrictionTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/CourseOwnerServiceTest.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/CourseOwnerServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/ApiApplication.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/ApiApplication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/View.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/View.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/mapper/CourseOwnerMapper.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/mapper/CourseOwnerMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/mapper/JsonProcessingExceptionMapper.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/mapper/JsonProcessingExceptionMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/mapper/RuntimeExceptionMapper.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/mapper/RuntimeExceptionMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/DateRestrictionTest.class" afterPath="$PROJECT_DIR$/target/test-classes/DateRestrictionTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/model/CourseOwner.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/model/CourseOwner.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/persistence/ABRequirementDAO.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/persistence/ABRequirementDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/persistence/CourseOwnerDAO.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/persistence/CourseOwnerDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/resource/CourseOwnerResource.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/resource/CourseOwnerResource.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/service/ABRequirementService.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/service/ABRequirementService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/service/BaseService.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/service/BaseService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/nl/ipsenh/service/CourseOwnerService.class" afterPath="$PROJECT_DIR$/target/classes/nl/ipsenh/service/CourseOwnerService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IPSENH-Studievolg-API.iml" afterPath="$PROJECT_DIR$/IPSENH-Studievolg-API.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nl/ipsenh/ApiApplication.java" afterPath="$PROJECT_DIR$/src/main/java/nl/ipsenh/ApiApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nl/ipsenh/persistence/ABRequirementDAO.java" afterPath="$PROJECT_DIR$/src/main/java/nl/ipsenh/persistence/ABRequirementDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nl/ipsenh/service/ABRequirementService.java" afterPath="$PROJECT_DIR$/src/main/java/nl/ipsenh/service/ABRequirementService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nl/ipsenh/service/BaseService.java" afterPath="$PROJECT_DIR$/src/main/java/nl/ipsenh/service/BaseService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/DateRestrictionTest.java" afterPath="$PROJECT_DIR$/src/test/java/DateRestrictionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configuration.yml" afterPath="$PROJECT_DIR$/configuration.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nl/ipsenh/mapper/CourseOwnerMapper.java" afterPath="$PROJECT_DIR$/src/main/java/nl/ipsenh/mapper/CourseOwnerMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nl/ipsenh/model/CourseOwner.java" afterPath="$PROJECT_DIR$/src/main/java/nl/ipsenh/model/CourseOwner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nl/ipsenh/persistence/CourseOwnerDAO.java" afterPath="$PROJECT_DIR$/src/main/java/nl/ipsenh/persistence/CourseOwnerDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nl/ipsenh/persistence/UserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/nl/ipsenh/persistence/UserDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nl/ipsenh/resource/CourseOwnerResource.java" afterPath="$PROJECT_DIR$/src/main/java/nl/ipsenh/resource/CourseOwnerResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/nl/ipsenh/service/CourseOwnerService.java" afterPath="$PROJECT_DIR$/src/main/java/nl/ipsenh/service/CourseOwnerService.java" />
     </list>
     <ignored path="IPSENH-Studievolg-API.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,9 +45,6 @@
     </SUITE>
     <SUITE FILE_PATH="coverage/IPSENH-Studievolg-API$ApiApplication.coverage" NAME="ApiApplication Coverage Results" MODIFIED="1492092566904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
-  <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
-  </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
     <option name="GROUP_SCHEMA" value="true" />
@@ -54,11 +60,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CourseTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CourseTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/CourseTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="56" column="14" lean-forward="false" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+            <state relative-caret-position="471">
+              <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,28 +72,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="configuration.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/configuration.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="438">
+              <caret line="22" column="14" lean-forward="false" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>testing</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -129,7 +127,6 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/ipsenh/restrictions/ABRestriction.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipsenh/restrictions/DateRestriction.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipsenh/mapper/JsonProcessingExceptionMapper.java" />
-        <option value="$PROJECT_DIR$/configuration.yml" />
         <option value="$PROJECT_DIR$/src/test/java/restrictions/DateRestrictionTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/courses/CourseTest.java" />
@@ -143,6 +140,7 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/ipsenh/ApiApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipsenh/service/BaseService.java" />
         <option value="$PROJECT_DIR$/src/test/java/ABRestrictionTest.java" />
+        <option value="$PROJECT_DIR$/configuration.yml" />
       </list>
     </option>
   </component>
@@ -151,13 +149,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -279,6 +270,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ipsenh" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IPSENH-Studievolg-API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ipsenh" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -422,26 +427,6 @@
       </pane>
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="restartRequiresConfirmation" value="true" />
-    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
-    <property name="js.eslint.eslintPackage" value="" />
-    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="SearchEverywhereHistoryKey" value="getAllRoles&#9;PSI&#9;JAVA://nl.ipsenh.service.RoleService#getAllRoles" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\programming\java\ipsenh" />
-    </key>
-  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -454,67 +439,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ABRestrictionTest">
+  <component name="RunManager" selected="JUnit.All in IPSENH-Studievolg-API">
     <configuration default="false" name="ApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="nl.ipsenh.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <option name="MAIN_CLASS_NAME" value="nl.ipsenh.ApiApplication" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="server configuration.yml" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="IPSENH-Studievolg-API" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="CourseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="IPSENH-Studievolg-API" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CourseTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="DateRestrictionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="IPSENH-Studievolg-API" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DateRestrictionTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
       <method />
     </configuration>
     <configuration default="false" name="All in IPSENH-Studievolg-API" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -526,27 +469,6 @@
       <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ABRestrictionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="IPSENH-Studievolg-API" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ABRestrictionTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -602,10 +524,10 @@
       <option name="CLASS_NAME" value="" />
       <option name="PACKAGE_NAME" value="" />
       <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
       <option name="PREFERRED_AVD" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="DEBUGGER_TYPE" value="Java" />
@@ -622,6 +544,7 @@
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -793,10 +716,8 @@
       <setting name="vmparams" value="" />
       <setting name="cmdLine" value="run-app" />
       <setting name="passParentEnv" value="true" />
-      <setting name="launchBrowser" value="false" />
+      <setting name="launchBrowser" value="true" />
       <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -909,7 +830,7 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
@@ -925,13 +846,6 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <pass-parent-envs>true</pass-parent-envs>
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -947,47 +861,16 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="5">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.ApiApplication" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.CourseTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.DateRestrictionTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.All in IPSENH-Studievolg-API" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ABRestrictionTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.All in IPSENH-Studievolg-API" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ABRestrictionTest" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.All in IPSENH-Studievolg-API" />
         <item index="1" class="java.lang.String" itemvalue="Application.ApiApplication" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.All in IPSENH-Studievolg-API" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.DateRestrictionTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.CourseTest" />
       </list>
     </recent_temporary>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-  </component>
-  <component name="SbtLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -1027,44 +910,17 @@
       <workItem from="1494345915900" duration="400000" />
       <workItem from="1494494451180" duration="6403000" />
       <workItem from="1494508479614" duration="874000" />
-      <workItem from="1494509375879" duration="63000" />
+      <workItem from="1494509375879" duration="378000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ABRestrictionTest - 2017.05.11 at 15h 27m 19s.xml">
-      <configuration name="ABRestrictionTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_IPSENH-Studievolg-API - 2017.05.11 at 13h 33m 21s.xml">
+    <history-entry file="All_in_IPSENH-Studievolg-API - 2017.05.11 at 15h 35m 50s.xml">
       <configuration name="All in IPSENH-Studievolg-API" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CourseTest - 2017.05.09 at 13h 54m 44s.xml">
-      <configuration name="CourseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CourseTest - 2017.05.09 at 13h 57m 09s.xml">
-      <configuration name="CourseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CourseTest - 2017.05.09 at 13h 58m 35s.xml">
-      <configuration name="CourseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CourseTest - 2017.05.09 at 17h 05m 48s.xml">
-      <configuration name="CourseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CourseTest - 2017.05.09 at 17h 07m 21s.xml">
-      <configuration name="CourseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CourseTest - 2017.05.09 at 17h 09m 33s.xml">
-      <configuration name="CourseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CourseTest - 2017.05.09 at 17h 11m 30s.xml">
-      <configuration name="CourseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DateRestrictionTest - 2017.05.09 at 17h 11m 46s.xml">
-      <configuration name="DateRestrictionTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105812000" />
+    <option name="totallyTimeSpent" value="106127000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1077,6 +933,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1089,16 +946,17 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39487725" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39429176" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32135308" sideWeight="0.49408868" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37843552" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37843552" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1765625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1765625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -1109,7 +967,6 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32135308" sideWeight="0.49408868" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
     </layout>
@@ -1152,17 +1009,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
-  </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1334,13 +1180,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configuration.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipsenh/mapper/JsonProcessingExceptionMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="685">
@@ -1360,22 +1199,22 @@
         <state relative-caret-position="1764">
           <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
-            <marker date="1494494394464" expanded="true" signature="3119:5864" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="3137:5851" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="3158:3582" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="3398:3560" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="3603:4101" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="3797:4079" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="3830:4047" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="4122:5832" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="4313:4885" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="4425:4852" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="4458:4821" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="4550:4787" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="4914:5810" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="4946:5780" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="5025:5105" ph="..." />
-            <marker date="1494494394464" expanded="true" signature="5145:5747" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="3033:5778" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="3051:5765" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="3072:3496" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="3312:3474" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="3517:4015" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="3711:3993" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="3744:3961" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="4036:5746" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="4227:4799" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="4339:4766" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="4372:4735" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="4464:4701" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="4828:5724" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="4860:5694" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="4939:5019" ph="..." />
+            <marker date="1494509593453" expanded="true" signature="5059:5661" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1483,6 +1322,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
           <caret line="69" column="50" lean-forward="false" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1540,11 +1380,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/CourseTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="56" column="14" lean-forward="false" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+        <state relative-caret-position="471">
+          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="22" column="14" lean-forward="false" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
