@@ -25,8 +25,8 @@ public class CourseOwner {
      * @param courseCode   of Course
      * @param courseLeader of Course
      */
-    @JsonCreator public CourseOwner(@JsonProperty("courseCode") String courseCode,
-        @JsonProperty("courseLeader") String courseLeader) {
+    @JsonCreator public CourseOwner(@JsonProperty("courseLeader") String courseLeader,
+        @JsonProperty("courseCode") String courseCode) {
         this.courseCode = courseCode;
         this.courseLeader = courseLeader;
     }
@@ -43,5 +43,9 @@ public class CourseOwner {
      */
     public String getCourseLeader() {
         return this.courseLeader;
+    }
+
+    @Override public boolean equals(Object obj) {
+        return (getClass() == obj.getClass());
     }
 }

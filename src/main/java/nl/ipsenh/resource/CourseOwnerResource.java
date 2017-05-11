@@ -33,6 +33,11 @@ public class CourseOwnerResource {
         return this.courseOwnerService.getAllCourseOwners();
     }
 
+    @GET @Path("/{email}") @JsonView(View.Protected.class) @RolesAllowed("admin") @Timed
+    public CourseOwner getCourseOwnerByEmail(@PathParam("email") String email) {
+        return this.courseOwnerService.getCourseOwnerByEmail(email);
+    }
+
     //  @GET
     //  @JsonView(View.Protected.class)
     //  @RolesAllowed("moduleleider,cursist,admin")
