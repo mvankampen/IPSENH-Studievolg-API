@@ -5,6 +5,7 @@ import nl.ipsenh.model.ABRequirement;
 import nl.ipsenh.model.Course;
 import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import java.util.Collection;
@@ -17,4 +18,6 @@ import java.util.Collection;
     @SqlQuery("SELECT * FROM ab_restriction WHERE course = :code")
     Collection<ABRequirement> getABRestrictionsByCourse(@BindBean Course course);
 
+    @SqlUpdate("INSERT INTO ab_restriction (course, required_course) VALUES (:course, :requiredCourse)")
+    void createABRequirement(@BindBean ABRequirement requirement);
 }

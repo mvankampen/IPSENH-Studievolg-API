@@ -14,7 +14,8 @@ import java.util.Calendar;
  */
 public class DateRestrictionTest {
 
-    @Test(expected = WebApplicationException.class) public void rejectRestriction() {
+    @Test(expected = WebApplicationException.class)
+    public void rejectRestriction() {
         Date courseStartDate = new Date(System.currentTimeMillis());
         Date courseEndDate = Date.valueOf("2020-02-10");
         Course course =

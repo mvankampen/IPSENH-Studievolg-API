@@ -11,6 +11,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.mockito:mockito-core:2.7.22" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: net.bytebuddy:byte-buddy:1.6.11" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: net.bytebuddy:byte-buddy-agent:1.6.11" level="project" />
+    <orderEntry type="library" name="Maven: org.objenesis:objenesis:2.5" level="project" />
+    <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-testing:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.assertj:assertj-core:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:2.25.1" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.jersey.test-framework:jersey-test-framework-core:2.25.1" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-core:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-util:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" level="project" />

@@ -9,7 +9,7 @@ public class BaseService<T> {
 
     public T requireResult(T model) {
         if (model == null) {
-            throw new NotFoundException();
+            throw new NotFoundException("The requested object could not be found");
         }
 
         return model;
