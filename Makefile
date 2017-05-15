@@ -3,7 +3,7 @@
 REPO=michaelvk1994
 
 # Name of the image
-IMAGE=IPSENH-Studievolg
+IMAGE=ipsenh-studievolg
 
 # Current branch-commit (example: master-ab01c1z)
 CURRENT=`echo $$GIT_BRANCH | cut -d'/' -f 2-`-$$(git rev-parse HEAD | cut -c1-7)
@@ -17,7 +17,7 @@ ci-jenkins-tests:
 ci-jenkins: ci-jenkins-tests build push cleanup
 
 
-# Create docker image with tag michaelvk1994/IPSENH-Studievolg:branch-sha
+# Create docker image with tag michaelvk1994/ipsenh-studievolg:branch-sha
 build:
 	docker build -t $(REPO)/$(IMAGE):$(CURRENT) -f operations/docker/Dockerfile .
 
