@@ -17,7 +17,7 @@ ci-jenkins-tests:
 ci-jenkins: ci-jenkins-tests build push cleanup
 
 
-# Create docker image with tag badmuts/go-todo-rest:branch-sha
+# Create docker image with tag michaelvk1994/IPSENH-Studievolg:branch-sha
 build:
 	docker build -t $(REPO)/$(IMAGE):$(CURRENT) -f operations/docker/Dockerfile .
 
