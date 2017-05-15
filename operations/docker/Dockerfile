@@ -1,6 +1,8 @@
 FROM openjdk:8-jre
-COPY . /usr/src/IPSENH-Studievolg
-WORKDIR /usr/src/IPSENH-Studievolg
-EXPOSE 8080
-RUN javac Main.java
-CMD ["java","-jar","/home/testprj-1.0-SNAPSHOT.jar"]
+COPY configuration.yml /opt/dropwizard/
+COPY target/IPSENH-Studievolg*.jar /opt/dropwizard/IPSENH-Studievolg.jar
+EXPOSE 80
+WORKDIR /opt/dropwizard
+RUN java -version
+ENTRYPOINT [“java”, “-jar”, “IPSENH-Studievolg.jar”]
+CMD [“server”, “-Done-jar.silent=true”, “configuration.yml”]
