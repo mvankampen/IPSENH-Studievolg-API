@@ -1,5 +1,4 @@
 FROM scratch
 MAINTAINER Michael “s1089455@student.hsleiden.nl”
 
-RUN apt-get update
-RUN apt-get install -y junit
+RUN sudo apt-get install -y junit
