@@ -1,6 +1,4 @@
 FROM scratch
 MAINTAINER Michael “s1089455@student.hsleiden.nl”
-RUN mkdir -p /opt/dropwizard
-WORKDIR /opt/dropwizard
 
-RUN sudo apt-get install -y junit
+RUN mkdir -p /opt/dropwizard
