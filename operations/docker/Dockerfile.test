@@ -1,6 +1,8 @@
-FROM debian
+FROM openjdk:8-jre
 MAINTAINER Michael “s1089455@student.hsleiden.nl”
 RUN mkdir -p /opt/dropwizard
-WORKDIR /opt/dropwizard
 
-RUN apt-get install -y junit
+COPY . /opt/dropwizard
+
+RUN apt-get install maven
+WORKDIR /opt/dropwizard

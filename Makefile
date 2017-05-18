@@ -16,7 +16,6 @@ ci-jenkins-tests:
 # Jenins stept to run complete pipeline
 ci-jenkins: ci-jenkins-tests build push cleanup
 
-
 # Create docker image with tag michaelvk1994/ipsenh-studievolg:branch-sha
 build:
 	docker build -t $(REPO)/$(IMAGE):$(CURRENT) -f operations/docker/Dockerfile .
