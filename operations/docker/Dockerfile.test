@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM java:8
 MAINTAINER Michael “s1089455@student.hsleiden.nl”
 
 #Make the directory
