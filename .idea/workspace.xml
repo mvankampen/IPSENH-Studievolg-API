@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f40074e3-b3cd-4684-910e-83382623462d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/operations/docker/Dockerfile.test" afterPath="$PROJECT_DIR$/operations/docker/Dockerfile.test" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,8 +37,8 @@
       <file leaf-file-name="Dockerfile.test" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/operations/docker/Dockerfile.test">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+            <state relative-caret-position="294">
+              <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -575,12 +575,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1495105557549</updated>
-      <workItem from="1495105562433" duration="1975000" />
+      <workItem from="1495105562433" duration="2331000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1975000" />
+    <option name="totallyTimeSpent" value="2331000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="527" extended-state="0" />
@@ -676,8 +676,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/operations/docker/Dockerfile.test">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+        <state relative-caret-position="294">
+          <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
           <folding />
         </state>
       </provider>

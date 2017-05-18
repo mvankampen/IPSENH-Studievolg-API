@@ -1,9 +1,16 @@
 FROM openjdk:8-jre
 MAINTAINER Michael “s1089455@student.hsleiden.nl”
-RUN mkdir -p /opt/dropwizard
 
+#Make the directory
+RUN mkdir -p /opt/dropwizard
 COPY . /opt/dropwizard
 
-RUN apt-get update && apt-get install maven
+# make opt/dropwizard the working directory (current directory)
 WORKDIR /opt/dropwizard
+
+#Install maven
+RUN apt-get update
+RUN apt-get -y install maven
+
+# Install dependencies of POM
 RUN mvn install
