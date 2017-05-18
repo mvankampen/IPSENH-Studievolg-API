@@ -11,7 +11,7 @@ CURRENT=`echo $$GIT_BRANCH | cut -d'/' -f 2-`-$$(git rev-parse HEAD | cut -c1-7)
 
 #Jenkins step to run complete pipeline
 ci-jenkins-tests:
-  docker run --rm -v $(WORKSPACE):/opt/dropwizard -w /opt/dropwizard maven:3.5.0-jdk-8-alpine mvn install
+  sudo docker run --rm -v $(WORKSPACE):/opt/dropwizard -w /opt/dropwizard maven:3.5.0-jdk-8-alpine mvn install
 #	docker build -t $(IMAGE):test -f operations/docker/Dockerfile.test .
 
 # Jenins stept to run complete pipeline
