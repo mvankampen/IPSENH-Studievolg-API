@@ -11,24 +11,24 @@ CURRENT=`echo $$GIT_BRANCH | cut -d'/' -f 2-`-$$(git rev-parse HEAD | cut -c1-7)
 
 #Jenkins step to run complete pipeline
 ci-jenkins-tests:
-	docker run --rm -v /var/jenkins_home/workspace/IPSENH-Studievolg-API:/opt/dropwizard -w /opt/dropwizard maven:3.5.0-jdk-8-alpine mvn install
+	sudo docker run --rm -v $$WORKSPACE:/opt/dropwizard -w /opt/dropwizard maven:3.5.0-jdk-8-alpine mvn install
 
 # Jenins stept to run complete pipeline
 ci-jenkins: ci-jenkins-tests build push cleanup
 
 # Create docker image with tag michaelvk1994/ipsenh-studievolg:branch-sha
 build:
-	docker build -t $(REPO)/$(IMAGE):$(CURRENT) -f operations/docker/Dockerfile .
+	sudo docker build -t $(REPO)/$(IMAGE):$(CURRENT) -f operations/docker/Dockerfile .
 
 # Push image to the hub, this also build the image
 push: build
-	docker push $(REPO)/$(IMAGE):$(CURRENT)
+	sudo docker push $(REPO)/$(IMAGE):$(CURRENT)
 
 # Cleanup step to remove test image and build image
 cleanup:
-	docker rmi $(IMAGE):test
-	docker rmi $(REPO)/$(IMAGE):$(CURRENT)
+	sudo docker rmi $(IMAGE):test
+	sudo docker rmi $(REPO)/$(IMAGE):$(CURRENT)
 
 # Run development via docker-compose. This autoreloads/compiles on change etc.
 start:
-	docker-compose up -d
+	sudo docker-compose up -d
