@@ -4,6 +4,6 @@ RUN mkdir -p /opt/dropwizard
 
 COPY . /opt/dropwizard
 
-RUN apt-get install maven
+RUN apt-get update && apt-get install maven
 WORKDIR /opt/dropwizard
-RUN sudo mvn install
+RUN mvn install
