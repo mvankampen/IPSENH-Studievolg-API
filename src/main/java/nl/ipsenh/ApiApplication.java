@@ -63,6 +63,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
         final CoursePassedDAO coursePassedDAO = jdbi.onDemand(CoursePassedDAO.class);
         final EnrollmentDAO enrollmentDAO = jdbi.onDemand(EnrollmentDAO.class);
         final CourseOwnerDAO courseOwnerDAO = jdbi.onDemand(CourseOwnerDAO.class);
+        final ExamDAO examDAO = jdbi.onDemand(ExamDAO.class);
 
         final UserService userService = new UserService(userDAO);
         final CourseService courseService = new CourseService(courseDAO);
@@ -74,6 +75,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
                 courseService, enrollmentDAO);
         final CourseOwnerService courseOwnerService =
             new CourseOwnerService(courseOwnerDAO, userService);
+        final ExamService examService = new ExamService(examDAO);
 
         environment.jersey().register(new UserResource(userService));
         environment.jersey().register(new CourseResource(courseService));
@@ -81,6 +83,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
         environment.jersey().register(new ABRestrictionResource(abRequirementService));
         environment.jersey().register(new EnrollmentResource(enrollmentService));
         environment.jersey().register(new CourseOwnerResource(courseOwnerService));
+        environment.jersey().register(new ExamResource(examService));
 
         setupAuthentication(environment, userDAO);
         configureClientFilter(environment);
