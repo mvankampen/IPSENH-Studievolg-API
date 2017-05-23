@@ -18,16 +18,17 @@ ci-jenkins: ci-jenkins-tests build push
 
 # Create docker image with tag michaelvk1994/ipsenh-studievolg:branch-sha
 build:
-	sudo docker build -t $(REPO)/$(IMAGE):$(CURRENT) -f operations/docker/Dockerfile .
+	sudo docker build -t $(REPO)/$(IMAGE):latest -f operations/docker/Dockerfile .
 
 # Push image to the hub, this also build the image
 push: build
-	sudo docker push $(REPO)/$(IMAGE):$(CURRENT)
+	# sudo docker push $(REPO)/$(IMAGE):$(CURRENT)
+	sudo docker push $(REPO)/$(IMAGE):latest
 
 # Cleanup step to remove test image and build image
 cleanup:
 	sudo docker rmi $(IMAGE):test
-	sudo docker rmi $(REPO)/$(IMAGE):$(CURRENT)
+	sudo docker rmi $(REPO)/$(IMAGE):latest
 
 # Run development via docker-compose. This autoreloads/compiles on change etc.
 start:
