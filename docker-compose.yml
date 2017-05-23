@@ -1,5 +1,5 @@
 version: "3"
-service:
+services:
   dropwizard:
     image: michaelvk1994/ipsenh-studievolg
     ports:
