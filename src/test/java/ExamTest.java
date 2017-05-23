@@ -58,7 +58,6 @@ public class ExamTest {
         verify(dao).getExamsByCourse("IPSENH");
     }
 
-
     @Test
     public void insertCourse() {
         Response response = resources.target("/exams").request().post(Entity.json(expectedExam));
@@ -73,6 +72,6 @@ public class ExamTest {
 
     @After
     public void tearDown() {
-
+        reset(dao);
     }
 }

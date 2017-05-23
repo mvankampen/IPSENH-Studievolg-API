@@ -49,7 +49,9 @@ public class EnrollmentService {
      */
     public void enrollToCourse(User user, String courseCode) {
         Course course = courseService.getCourseByCode(courseCode);
-        verifyEnrollment(user, course);
+        if(verifyEnrollment(user, course)) {
+            throw new ForbiddenException("You are already enrolled for this course");
+        }
         Collection<CourseRestriction> restrictions =
             restrictionService.getRestrictionByCourse(course);
 
@@ -79,11 +81,8 @@ public class EnrollmentService {
      *
      * @param user {@link User} object current user
      */
-    private void verifyEnrollment(User user, Course course) {
-        EnrolledCourse enrolledCourse = enrollmentDAO.get(user.getEmail(), course.getCode());
-        if (enrolledCourse != null) {
-            throw new ForbiddenException("You are already enrolled for this course");
-        }
+    public boolean verifyEnrollment(User user, Course course) {
+        return (enrollmentDAO.get(user.getEmail(), course.getCode()) != null);
     }
 
     /**
