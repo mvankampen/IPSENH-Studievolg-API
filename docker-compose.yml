@@ -1,0 +1,28 @@
+version: "3"
+service:
+  dropwizard:
+    image: michaelvk1994/ipsenh-studievolg
+    ports:
+     - "8090:8090"
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: HSleiden2017@
+      POSTGRES_DBNAME: IPSENH-Studievolg
+      POSTGRES_DBUSER: hsleiden2017
+      POSTGRES_DBPASS: hsleiden2@
+    volumes:
+      - "postgres-data:/var/lib/postgresql/data"
+  web:
+    image: nginx
+    links:
+     - dropwizard
+    ports:
+     - "8080:80"
+volumes:
+  postgres-data:
