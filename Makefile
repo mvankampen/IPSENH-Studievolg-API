@@ -14,7 +14,7 @@ ci-jenkins-tests:
 	sudo docker run --rm -v $$WORKSPACE:/opt/dropwizard -w /opt/dropwizard maven:3.5.0-jdk-8-alpine mvn install
 
 # Jenins stept to run complete pipeline
-ci-jenkins: ci-jenkins-tests build cleanup
+ci-jenkins: ci-jenkins-tests build
 
 # Create docker image with tag michaelvk1994/ipsenh-studievolg:branch-sha
 build:
