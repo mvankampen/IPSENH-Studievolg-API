@@ -14,11 +14,15 @@ ci-jenkins-tests:
 	sudo docker run --rm -v $$WORKSPACE:/opt/dropwizard -w /opt/dropwizard maven:3.5.0-jdk-8-alpine mvn install
 
 # Jenins stept to run complete pipeline
-ci-jenkins: ci-jenkins-tests build
+ci-jenkins: ci-jenkins-tests build push
 
 # Create docker image with tag michaelvk1994/ipsenh-studievolg:branch-sha
 build:
 	sudo docker build -t $(REPO)/$(IMAGE):$(CURRENT) -f operations/docker/Dockerfile .
+
+# Push image to the hub, this also build the image
+push: build
+	sudo docker push $(REPO)/$(IMAGE):$(CURRENT)
 
 # Cleanup step to remove test image and build image
 cleanup:
