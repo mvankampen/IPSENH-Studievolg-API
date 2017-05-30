@@ -20,7 +20,7 @@ services:
       POSTGRES_DBUSER: hsleiden2017
       POSTGRES_DBPASS: hsleiden2@
     volumes:
-      - "postgres-data:/var/lib/postgresql/data"
+      - postgres-data:/var/lib/postgresql/data
   web:
     image: nginx
     links:
@@ -28,11 +28,12 @@ services:
     ports:
      - "8080:80"
     volumes:
-     - "volume-nginx-conf.d:/etc/nginx/conf.d"
-     - "volume-nginx-log:/var/log/nginx"
+     - volume-nginx-conf.d:/etc/nginx/conf.d
+     - volume-nginx-log:/var/log/nginx
 volumes:
   postgres-data:
   volume-nginx-conf.d:
   volume-nginx-log:
+  volume-dropwizard:
 
 
