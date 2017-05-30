@@ -26,7 +26,7 @@ services:
     links:
      - dropwizard
     ports:
-     - "8080:80"
+     - "80:80"
     volumes:
      - volume-nginx-conf.d:/etc/nginx/conf.d
      - volume-nginx-log:/var/log/nginx
