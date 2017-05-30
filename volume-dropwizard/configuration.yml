@@ -13,10 +13,10 @@ database:
   driverClass: org.postgresql.Driver
 
   # the username
-  user: hsleiden2017
+  user: postgres
 
   # the password
-  password: hsleiden2@
+  password: HSleiden2017@
 
   # the JDBC URL
   url: jdbc:postgresql://136.144.152.131:5432/IPSENH-Studievolg
