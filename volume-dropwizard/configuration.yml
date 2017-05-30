@@ -4,9 +4,9 @@ server:
   registerDefaultExceptionMappers: false
   rootPath: /api/*
   adminContextPath: /admin
-  connector:
-    type: http
-    port: 8080
+  applicationConnectors:
+   - type: http
+     port: 8080
   
 database:
   # the name of your JDBC driver
