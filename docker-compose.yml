@@ -1,11 +1,14 @@
 version: "3"
 services:
   dropwizard:
-    image: michaelvk1994/ipsenh-studievolg:latest
+    image: openjdk:8-jre
     ports:
      - "8090:8090"
+    volumes:
+     - volume-dropwizard:/dropwizard
     depends_on:
       - postgres
+    command: ["java", "-jar", "-Done-jar.silent=true", "/opt/dropwizard/IPSENH-Studievolg.jar", "server", "/dropwizard/configuration.yml"]
   postgres:
     image: postgres
     ports:
@@ -24,5 +27,8 @@ services:
      - dropwizard
     ports:
      - "8080:80"
+    volumes:
+     - volume-nginx-conf.d:/etc/nginx/conf.d
+     - volume-nginx-log:/var/log/nginx
 volumes:
   postgres-data:
