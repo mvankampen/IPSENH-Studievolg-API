@@ -5,8 +5,8 @@ server:
   rootPath: /api/*
   adminContextPath: /admin
   connector:
-      type: http
-      port: 8090
+    type: http
+    port: 8080
   
 database:
   # the name of your JDBC driver
