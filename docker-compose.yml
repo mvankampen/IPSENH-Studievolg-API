@@ -30,5 +30,4 @@ services:
     volumes:
      - volume-nginx-conf.d:/etc/nginx/conf.d
      - volume-nginx-log:/var/log/nginx
-volumes:
-  postgres-data:
+
