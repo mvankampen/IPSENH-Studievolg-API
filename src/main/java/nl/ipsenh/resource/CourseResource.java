@@ -2,8 +2,10 @@ package nl.ipsenh.resource;
 
 import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.annotation.JsonView;
+import io.dropwizard.auth.Auth;
 import nl.ipsenh.View;
 import nl.ipsenh.model.Course;
+import nl.ipsenh.model.User;
 import nl.ipsenh.service.CourseService;
 
 import javax.annotation.security.RolesAllowed;
@@ -27,6 +29,13 @@ public class CourseResource {
     public Collection<Course> getAllCourses() {
         return service.getAllCourses();
     }
+
+    @Path("/me")
+    @GET @JsonView(View.Protected.class) @RolesAllowed("moduleleider,cursist,admin") @Timed
+    public Collection<Course> getMyCourses(@Auth User user) {
+        return service.getMyCourses(user);
+    }
+
 
     @GET @Path("/{code}") @JsonView(View.Protected.class)
     @RolesAllowed("moduleleider,cursist,admin") @Timed
