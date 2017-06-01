@@ -42,7 +42,7 @@ public class ApiConfiguration extends Configuration implements AssetsBundleConfi
     }
 
     public String getAllowedOrigins() {
-        return "http://localhost:3000";
+        return "*";
     }
 
     public String getAllowedMethods() {
