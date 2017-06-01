@@ -1,14 +1,14 @@
 version: "3"
 services:
   dropwizard:
-    image: openjdk:8-jre
+    image: michaelvk1994/ipsenh-studievolg
     ports:
      - "8090:8090"
     volumes:
-     - volume-dropwizard:/dropwizard
+      - "./volume-dropwizard/configuration.yml:/opt/dropwizard/configuration.yml"
+#     - volume-dropwizard:/dropwizard
     depends_on:
       - postgres
-    command: ["java", "-jar", "-Done-jar.silent=true", "/var/jenkins_home/workspace/IPSENH-Studievolg-API/target/IPSENH-Studievolg.jar", "server", "/dropwizard/configuration.yml"]
   postgres:
     image: postgres
     ports:
