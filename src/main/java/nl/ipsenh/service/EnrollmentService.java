@@ -1,5 +1,6 @@
 package nl.ipsenh.service;
 
+import javax.ws.rs.NotFoundException;
 import nl.ipsenh.model.Course;
 import nl.ipsenh.model.CourseRestriction;
 import nl.ipsenh.model.EnrolledCourse;
@@ -63,6 +64,17 @@ public class EnrollmentService {
     }
 
     /**
+     * Verify if the course is a valid and existing course and remove it
+     *
+     * @param user The current logged in user
+     * @param courseCode The course from which to remove the enrollment
+     */
+    public void removeEnrollment(User user, String courseCode) {
+        courseService.getCourseByCode(courseCode);
+        enrollmentDAO.removeEnrollment(user.getEmail(), courseCode);
+    }
+
+    /**
      * Validate the restrictions according to their own implementation
      *
      * @param restriction {@link CourseRestriction} object, contains Course object and
@@ -71,9 +83,7 @@ public class EnrollmentService {
      */
     private void runValidation(CourseRestriction restriction, Course course, User user) {
         Restriction courseRestriction = getRestriction(restriction, course, user);
-        if (courseRestriction != null) {
-            courseRestriction.validate();
-        }
+        courseRestriction.validate();
     }
 
     /**
