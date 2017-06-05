@@ -12,10 +12,10 @@ import java.sql.SQLException;
  */
 public class ExamResultMapper implements ResultSetMapper<ExamResult> {
 
-    @Override
-    public ExamResult map(int index, ResultSet r, StatementContext ctx) throws SQLException {
+    @Override public ExamResult map(int index, ResultSet r, StatementContext ctx)
+        throws SQLException {
         return new ExamResult(r.getString("exam_name"), r.getString("exam_course"),
-                r.getDate("exam_date"), r.getDate("exam_mutation_date"),
-                r.getDouble("exam_result"), r.getString("user_email"));
+            r.getDate("exam_date"), r.getDate("exam_mutation_date"), r.getDouble("exam_result"),
+            r.getString("user_email"));
     }
 }

@@ -13,11 +13,9 @@ import java.util.Collection;
 /**
  * Created by Jamie on 23-5-2017.
  */
-@RegisterMapper(ExamMapper.class)
-public interface ExamDAO {
+@RegisterMapper(ExamMapper.class) public interface ExamDAO {
 
-    @SqlQuery("SELECT * FROM Exam")
-    Collection<Exam> getAll();
+    @SqlQuery("SELECT * FROM Exam") Collection<Exam> getAll();
 
     @SqlQuery("SELECT * FROM Exam WHERE course_code = :course_code")
     Collection<Exam> getExamsByCourse(@Bind("course_code") String courseCode);

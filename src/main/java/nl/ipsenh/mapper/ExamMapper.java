@@ -12,9 +12,8 @@ import java.sql.SQLException;
  */
 public class ExamMapper implements ResultSetMapper<Exam> {
 
-    @Override
-    public Exam map(int index, ResultSet r, StatementContext ctx) throws SQLException {
+    @Override public Exam map(int index, ResultSet r, StatementContext ctx) throws SQLException {
         return new Exam(r.getString("exam_name"), r.getInt("exam_weight"),
-                r.getString("course_code"));
+            r.getString("course_code"));
     }
 }

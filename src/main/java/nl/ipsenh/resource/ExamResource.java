@@ -14,9 +14,7 @@ import java.util.Collection;
 /**
  * Created by Jamie on 23-5-2017.
  */
-@Path("/exams")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@Path("/exams") @Produces(MediaType.APPLICATION_JSON) @Consumes(MediaType.APPLICATION_JSON)
 public class ExamResource {
 
     private final ExamService service;
@@ -25,34 +23,22 @@ public class ExamResource {
         this.service = service;
     }
 
-    @GET
-    @JsonView(View.Protected.class)
-    @RolesAllowed("moduleleider,admin")
-    @Timed
+    @GET @JsonView(View.Protected.class) @RolesAllowed("moduleleider,admin") @Timed
     public Collection<Exam> getAllExams() {
         return service.getAllExams();
     }
 
-    @GET
-    @Path("/{course}")
-    @JsonView(View.Protected.class)
-    @RolesAllowed("moduleleider,admin")
-    @Timed
-    public Collection<Exam> getExamsByCourse(@PathParam("course") String courseCode) {
+    @GET @Path("/{course}") @JsonView(View.Protected.class) @RolesAllowed("moduleleider,admin")
+    @Timed public Collection<Exam> getExamsByCourse(@PathParam("course") String courseCode) {
         return service.getExamsByCourse(courseCode);
     }
 
-    @POST
-    @JsonView(View.Protected.class)
-    @RolesAllowed("moduleleider,admin")
+    @POST @JsonView(View.Protected.class) @RolesAllowed("moduleleider,admin")
     public void insertExam(Exam exam) {
         service.insertExam(exam);
     }
 
-    @PUT
-    @Path("/{examName}")
-    @JsonView(View.Protected.class)
-    @RolesAllowed("moduleleider,admin")
+    @PUT @Path("/{examName}") @JsonView(View.Protected.class) @RolesAllowed("moduleleider,admin")
     public void updateExam(Exam exam, @PathParam("examName") String examName) {
         System.out.println(examName.replace("%20", " "));
         service.updateExam(exam, examName.replace("%20", " "));

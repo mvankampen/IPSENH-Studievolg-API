@@ -1,9 +1,7 @@
 package nl.ipsenh.service;
 
-import javax.ws.rs.NotFoundException;
 import nl.ipsenh.model.Course;
 import nl.ipsenh.model.CourseRestriction;
-import nl.ipsenh.model.EnrolledCourse;
 import nl.ipsenh.model.User;
 import nl.ipsenh.persistence.EnrollmentDAO;
 import nl.ipsenh.restrictions.ABRestriction;
@@ -50,7 +48,7 @@ public class EnrollmentService {
      */
     public void enrollToCourse(User user, String courseCode) {
         Course course = courseService.getCourseByCode(courseCode);
-        if(verifyEnrollment(user, course)) {
+        if (verifyEnrollment(user, course)) {
             throw new ForbiddenException("You are already enrolled for this course");
         }
         Collection<CourseRestriction> restrictions =
@@ -66,7 +64,7 @@ public class EnrollmentService {
     /**
      * Verify if the course is a valid and existing course and remove it
      *
-     * @param user The current logged in user
+     * @param user       The current logged in user
      * @param courseCode The course from which to remove the enrollment
      */
     public void removeEnrollment(User user, String courseCode) {

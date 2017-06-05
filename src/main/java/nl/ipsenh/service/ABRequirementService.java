@@ -1,10 +1,10 @@
 package nl.ipsenh.service;
 
-import javax.ws.rs.ForbiddenException;
 import nl.ipsenh.model.ABRequirement;
 import nl.ipsenh.model.Course;
 import nl.ipsenh.persistence.ABRequirementDAO;
 
+import javax.ws.rs.ForbiddenException;
 import java.util.Collection;
 
 /**
@@ -14,6 +14,7 @@ public class ABRequirementService {
 
     private ABRequirementDAO abRequirementDAO;
     private CourseService courseService;
+
     /**
      * @param abRequirementDAO implementation of interface Database
      */
@@ -31,7 +32,7 @@ public class ABRequirementService {
     }
 
     public void createABRequirement(ABRequirement requirement) {
-        if(requirement.getCourse().equalsIgnoreCase(requirement.getRequiredCourse()))
+        if (requirement.getCourse().equalsIgnoreCase(requirement.getRequiredCourse()))
             throw new ForbiddenException("You cannot asign a course to it`s self");
         this.courseService.getCourseByCode(requirement.getCourse());
         this.courseService.getCourseByCode(requirement.getRequiredCourse());

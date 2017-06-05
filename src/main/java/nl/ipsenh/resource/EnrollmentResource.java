@@ -31,7 +31,8 @@ public class EnrollmentResource {
     }
 
     @DELETE @JsonView(View.Protected.class) @RolesAllowed("admin,moduleleider,cursist")
-    @Path("/{courseCode}") public void removeEnrollment(@Auth User user, @PathParam("courseCode") String courseCode) {
+    @Path("/{courseCode}")
+    public void removeEnrollment(@Auth User user, @PathParam("courseCode") String courseCode) {
         service.removeEnrollment(user, courseCode);
     }
 }

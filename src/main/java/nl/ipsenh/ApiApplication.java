@@ -69,7 +69,8 @@ public class ApiApplication extends Application<ApiConfiguration> {
         final UserService userService = new UserService(userDAO);
         final CourseService courseService = new CourseService(courseDAO);
         final RestrictionService restrictionService = new RestrictionService(courseRestrictionDAO);
-        final ABRequirementService abRequirementService = new ABRequirementService(abRequirementDAO, courseService);
+        final ABRequirementService abRequirementService =
+            new ABRequirementService(abRequirementDAO, courseService);
         final CoursePassedService coursePassedService = new CoursePassedService(coursePassedDAO);
         final EnrollmentService enrollmentService =
             new EnrollmentService(restrictionService, abRequirementService, coursePassedService,
@@ -77,7 +78,8 @@ public class ApiApplication extends Application<ApiConfiguration> {
         final CourseOwnerService courseOwnerService =
             new CourseOwnerService(courseOwnerDAO, userService);
         final ExamService examService = new ExamService(examDAO);
-        final ExamResultService examResultService = new ExamResultService(examResultDAO, enrollmentService, userService, courseService);
+        final ExamResultService examResultService =
+            new ExamResultService(examResultDAO, enrollmentService, userService, courseService);
 
         environment.jersey().register(new UserResource(userService));
         environment.jersey().register(new CourseResource(courseService));

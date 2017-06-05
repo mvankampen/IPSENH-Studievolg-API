@@ -17,8 +17,8 @@ import java.util.Collection;
 
     @SqlQuery("SELECT * FROM user_account") public Collection<User> getAll();
 
-    @SqlQuery("SELECT * FROM user_account WHERE email = :email LIMIT 1")
-    User getUserByEmail(@Bind("email") String email);
+    @SqlQuery("SELECT * FROM user_account WHERE email = :email LIMIT 1") User getUserByEmail(
+        @Bind("email") String email);
 
     @SqlUpdate("INSERT INTO user_account (first_name, insertion, last_name, email, date_of_birth, password, role) VALUES (:firstName, :insertion, :lastName, :email, :dateOfBirth, :password, :role)")
     void insertUser(@BindBean User user); //TODO: encrypt password SHA256 (db)

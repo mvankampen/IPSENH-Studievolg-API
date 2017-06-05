@@ -30,9 +30,8 @@ public class CourseResource {
         return service.getAllCourses();
     }
 
-    @Path("/me")
-    @GET @JsonView(View.Protected.class) @RolesAllowed("moduleleider,cursist,admin") @Timed
-    public Collection<Course> getMyCourses(@Auth User user) {
+    @Path("/me") @GET @JsonView(View.Protected.class) @RolesAllowed("moduleleider,cursist,admin")
+    @Timed public Collection<Course> getMyCourses(@Auth User user) {
         return service.getMyCourses(user);
     }
 

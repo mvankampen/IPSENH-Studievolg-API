@@ -13,37 +13,22 @@ import java.sql.Date;
  */
 public class ExamResult {
 
-    @NotEmpty
-    @Length(max = 255)
-    @JsonView(View.Public.class)
-    private String name;
+    @NotEmpty @Length(max = 255) @JsonView(View.Public.class) private String name;
 
-    @NotEmpty
-    @Length(min = 3, max = 255)
-    @JsonView(View.Public.class)
-    private String courseCode;
+    @NotEmpty @Length(min = 3, max = 255) @JsonView(View.Public.class) private String courseCode;
 
-    @NotEmpty
-    @JsonView(View.Public.class)
-    private Date date;
+    @NotEmpty @JsonView(View.Public.class) private Date date;
 
-    @NotEmpty
-    @JsonView(View.Public.class)
-    private Date mutationDate;
+    @NotEmpty @JsonView(View.Public.class) private Date mutationDate;
 
-    @NotEmpty
-    @JsonView(View.Public.class)
-    @Length(min = 1, max = 10)
-    private double result;
+    @NotEmpty @JsonView(View.Public.class) @Length(min = 1, max = 10) private double result;
 
-    @NotEmpty
-    @Length(min = 7, max = 255)
-    @JsonView(View.Public.class)
-    private String userEmail;
+    @NotEmpty @Length(min = 7, max = 255) @JsonView(View.Public.class) private String userEmail;
 
-    public ExamResult(@JsonProperty(":name") String name, @JsonProperty("courseCode") String courseCode,
-                      @JsonProperty("exam_date") Date date, @JsonProperty("exam_mutation_date") Date mutationDate,
-                      @JsonProperty("result") double result, @JsonProperty("userEmail") String userEmail) {
+    public ExamResult(@JsonProperty(":name") String name,
+        @JsonProperty("courseCode") String courseCode, @JsonProperty("exam_date") Date date,
+        @JsonProperty("exam_mutation_date") Date mutationDate,
+        @JsonProperty("result") double result, @JsonProperty("userEmail") String userEmail) {
         this.name = name;
         this.courseCode = courseCode;
         this.date = date;

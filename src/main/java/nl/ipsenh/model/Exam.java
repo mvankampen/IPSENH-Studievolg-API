@@ -10,22 +10,14 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 public class Exam {
 
-    @NotEmpty
-    @Length(max = 255)
-    @JsonView(View.Public.class)
-    private String name;
+    @NotEmpty @Length(max = 255) @JsonView(View.Public.class) private String name;
 
-    @NotEmpty
-    @Length(max = 100)
-    @JsonView(View.Public.class)
-    private int weight;
+    @NotEmpty @Length(max = 100) @JsonView(View.Public.class) private int weight;
 
-    @NotEmpty
-    @Length(min = 3, max = 255)
-    @JsonView(View.Public.class)
-    private String courseCode;
+    @NotEmpty @Length(min = 3, max = 255) @JsonView(View.Public.class) private String courseCode;
 
-    public Exam() {}
+    public Exam() {
+    }
 
     public Exam(String name, int weight, String courseCode) {
         this.name = name;

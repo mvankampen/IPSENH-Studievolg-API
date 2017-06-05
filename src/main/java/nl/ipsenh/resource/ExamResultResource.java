@@ -16,9 +16,7 @@ import java.util.Collection;
 /**
  * Created by Jamie on 23-5-2017.
  */
-@Path("results")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@Path("results") @Produces(MediaType.APPLICATION_JSON) @Consumes(MediaType.APPLICATION_JSON)
 public class ExamResultResource {
 
     private final ExamResultService service;
@@ -27,52 +25,33 @@ public class ExamResultResource {
         this.service = service;
     }
 
-    @GET
-    @JsonView(View.Protected.class)
-    @RolesAllowed("moduleleider,admin")
-    @Timed
+    @GET @JsonView(View.Protected.class) @RolesAllowed("moduleleider,admin") @Timed
     public Collection<ExamResult> getAll() {
         return service.getAll();
     }
 
-    @GET
-    @Path("/user/{user}")
-    @JsonView(View.Protected.class)
-    @RolesAllowed("moduleleider,admin")
-    @Timed
-    public Collection<ExamResult> getAllResultsForUser(@PathParam("user") String userEmail) {
+    @GET @Path("/user/{user}") @JsonView(View.Protected.class) @RolesAllowed("moduleleider,admin")
+    @Timed public Collection<ExamResult> getAllResultsForUser(@PathParam("user") String userEmail) {
         return service.getAllForUser(userEmail);
     }
 
-    @GET
-    @Path("/course/{course}")
-    @JsonView(View.Protected.class)
-    @RolesAllowed("moduleleider,admin")
-    @Timed
+    @GET @Path("/course/{course}") @JsonView(View.Protected.class)
+    @RolesAllowed("moduleleider,admin") @Timed
     public Collection<ExamResult> getAllResultsForCourse(@PathParam("course") String course) {
         return service.getAllForCourse(course.replace("%20", " "));
     }
 
-    @GET
-    @Path("/exam/{exam}")
-    @JsonView(View.Protected.class)
-    @RolesAllowed("moduleleider,admin")
-    @Timed
-    public Collection<ExamResult> getAllResultsForExam(@PathParam("exam") String exam) {
+    @GET @Path("/exam/{exam}") @JsonView(View.Protected.class) @RolesAllowed("moduleleider,admin")
+    @Timed public Collection<ExamResult> getAllResultsForExam(@PathParam("exam") String exam) {
         return service.getAllForExam(exam);
     }
 
-    @POST
-    @JsonView(View.Protected.class)
-    @RolesAllowed("moduleleider,admin")
+    @POST @JsonView(View.Protected.class) @RolesAllowed("moduleleider,admin")
     public void insertExam(ExamResult result) {
         service.insertResult(result);
     }
 
-    @GET
-    @RolesAllowed("cursist")
-    @Path("/me")
-    @Timed
+    @GET @RolesAllowed("cursist") @Path("/me") @Timed
     public Collection<ExamResult> getResultsForMe(@Auth User cursist) {
         return getAllResultsForUser(cursist.getEmail());
     }

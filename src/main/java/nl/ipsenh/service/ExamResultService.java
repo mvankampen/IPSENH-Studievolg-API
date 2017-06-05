@@ -18,7 +18,8 @@ public class ExamResultService extends BaseService<ExamResult> {
     private final UserService userService;
     private final CourseService courseService;
 
-    public ExamResultService(ExamResultDAO dao, EnrollmentService enrollmentService, UserService userService, CourseService courseService) {
+    public ExamResultService(ExamResultDAO dao, EnrollmentService enrollmentService,
+        UserService userService, CourseService courseService) {
         this.dao = dao;
         this.enrollmentService = enrollmentService;
         this.userService = userService;
@@ -44,10 +45,11 @@ public class ExamResultService extends BaseService<ExamResult> {
     public void insertResult(ExamResult result) {
         User cursist = userService.getUserByEmail(result.getUserEmail());
         Course takenCourse = courseService.getCourseByCode(result.getCourseCode());
-        if(enrollmentService.verifyEnrollment(cursist, takenCourse)) {
+        if (enrollmentService.verifyEnrollment(cursist, takenCourse)) {
             dao.insertResult(result);
         } else {
-            throw new ForbiddenException("You are not enrolled in the " + result.getCourseCode() + " course!");
+            throw new ForbiddenException(
+                "You are not enrolled in the " + result.getCourseCode() + " course!");
         }
     }
 }

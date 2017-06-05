@@ -13,11 +13,9 @@ import java.util.Collection;
 /**
  * Created by Jamie on 23-5-2017.
  */
-@RegisterMapper(ExamResultMapper.class)
-public interface ExamResultDAO {
+@RegisterMapper(ExamResultMapper.class) public interface ExamResultDAO {
 
-    @SqlQuery("SELECT * FROM Exam_result")
-    Collection<ExamResult> getAll();
+    @SqlQuery("SELECT * FROM Exam_result") Collection<ExamResult> getAll();
 
     @SqlQuery("SELECT * FROM Exam_result WHERE user_email = :user")
     Collection<ExamResult> getAllResultsForUser(@Bind("user") String userEmail);

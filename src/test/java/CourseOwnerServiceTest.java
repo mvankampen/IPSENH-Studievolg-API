@@ -31,12 +31,14 @@ public class CourseOwnerServiceTest {
     private static final UserService USER_SERVICE = mock(UserService.class);
 
     @ClassRule public static final ResourceTestRule resources = ResourceTestRule.builder()
-        .addResource(new CourseOwnerResource(
-            new CourseOwnerService(COURSE_OWNER_DAO, USER_SERVICE))).build();
+        .addResource(
+            new CourseOwnerResource(new CourseOwnerService(COURSE_OWNER_DAO, USER_SERVICE)))
+        .build();
 
     private final CourseOwner expectedCourseOwner =
         new CourseOwner("moduleleider@ipsenh.nl", "IAD1");
-    private final User expectedUser = new User("moduleleider@ipsenh.nl", "", "", "", "", null, "moduleleider");
+    private final User expectedUser =
+        new User("moduleleider@ipsenh.nl", "", "", "", "", null, "moduleleider");
 
     @Before public void setup() {
         when(USER_SERVICE.getUserByEmail(eq("moduleleider@ipsenh.nl"))).thenReturn(expectedUser);
