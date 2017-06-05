@@ -1,0 +1,39 @@
+version: "3"
+services:
+  dropwizard:
+    image: michaelvk1994/ipsenh-studievolg
+    ports:
+     - "8090:8090"
+    volumes:
+      - "./volume-dropwizard/configuration.yml:/opt/dropwizard/configuration.yml"
+#     - volume-dropwizard:/dropwizard
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: HSleiden2017@
+      POSTGRES_DBNAME: IPSENH-Studievolg
+      POSTGRES_DBUSER: hsleiden2017
+      POSTGRES_DBPASS: hsleiden2@
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  web:
+    image: nginx
+    links:
+     - dropwizard
+    ports:
+     - "80:80"
+    volumes:
+     - volume-nginx-conf.d:/etc/nginx/conf.d
+     - volume-nginx-log:/var/log/nginx
+volumes:
+  postgres-data:
+  volume-nginx-conf.d:
+  volume-nginx-log:
+  volume-dropwizard:
+
+

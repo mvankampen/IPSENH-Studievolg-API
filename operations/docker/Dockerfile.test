@@ -1,0 +1,21 @@
+FROM java:8
+MAINTAINER Michael “s1089455@student.hsleiden.nl”
+
+#Make the directory
+RUN mkdir -p /opt/dropwizard
+COPY . /opt/dropwizard
+
+# make opt/dropwizard the working directory (current directory)
+WORKDIR /opt/dropwizard
+
+#Install maven
+RUN apt-get update
+RUN apt-get -y install maven
+
+# Install dependencies of POM
+RUN mvn install \ 
+	&& mvn dependency:go-offline dependency:resolve-plugins \
+
+docker run --rm -v $WORKSPACE:/opt/dropwizard -w /opt/dropwizard maven:3.5.0-jdk-8-alpine mvn clean install
+
+export WORKSPACE=/var/lib/docker/volumes/04e682fe0611524ad8ed051494e9086b69c215816956b63ce239f17d3297d820/_data/workspace/IPSENH-Studievolg-API
