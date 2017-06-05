@@ -1,6 +1,7 @@
 package nl.ipsenh.service;
 
 import nl.ipsenh.model.Course;
+import nl.ipsenh.model.User;
 import nl.ipsenh.persistence.CourseDAO;
 
 import java.util.Collection;
@@ -29,6 +30,10 @@ public class CourseService extends BaseService<Course> {
      */
     public Collection<Course> getAllCourses() {
         return courseDAO.getAll();
+    }
+
+    public Collection<Course> getMyCourses(User user) {
+        return courseDAO.getMyCourses(user);
     }
 
     /**

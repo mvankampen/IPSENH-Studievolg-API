@@ -1,337 +1,133 @@
---
--- PostgreSQL database dump
---
+DROP TABLE IF EXISTS User_account CASCADE;
+DROP TABLE IF EXISTS User_role CASCADE;
+DROP TABLE IF EXISTS course CASCADE;
+DROP TABLE IF EXISTS restriction CASCADE;
+DROP TABLE IF EXISTS Course_owner CASCADE;
+DROP TABLE IF EXISTS Course_enrollment CASCADE;
+DROP TABLE IF EXISTS Course_restriction CASCADE;
+DROP TABLE IF EXISTS ab_restriction CASCADE;
+DROP TABLE IF EXISTS course_passed CASCADE;
+DROP TABLE IF EXISTS Exam_result CASCADE;
+DROP TABLE IF EXISTS Exam CASCADE;
 
--- Dumped from database version 9.5.3
--- Dumped by pg_dump version 9.5.3
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = ON;
-SET check_function_bodies = FALSE;
-SET client_min_messages = WARNING;
-SET row_security = OFF;
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
-SET search_path = public, pg_catalog;
-
-SET default_tablespace = '';
-
-SET default_with_oids = FALSE;
-
---
--- Name: ab_restriction; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE ab_restriction (
-  course          CHARACTER VARYING(255),
-  required_course CHARACTER VARYING(255)
+CREATE TABLE User_role (
+  role_name VARCHAR(255),
+  CONSTRAINT pk_role_name PRIMARY KEY (role_name)
 );
 
-
-ALTER TABLE ab_restriction
-  OWNER TO postgres;
-
---
--- Name: course; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE course (
-  code        CHARACTER VARYING(255) NOT NULL,
-  description CHARACTER VARYING(255),
-  start_date  DATE                   NOT NULL,
-  end_date    DATE                   NOT NULL
+CREATE TABLE User_account (
+  email VARCHAR(255) NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  insertion VARCHAR(255),
+  last_name VARCHAR(255) NOT NULL,
+  date_of_birth DATE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(255) REFERENCES User_role (role_name),
+  CONSTRAINT pk_email PRIMARY KEY (email)
 );
 
-
-ALTER TABLE course
-  OWNER TO postgres;
-
---
--- Name: course_enrollment; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE course_enrollment (
-  user_email      CHARACTER VARYING(255),
-  course_code     CHARACTER VARYING(255),
-  enrollment_date DATE DEFAULT now()
+CREATE TABLE Course (
+  code VARCHAR(255) NOT NULL,
+  description VARCHAR(255),
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  CONSTRAINT pk_code PRIMARY KEY (code)
 );
-
-
-ALTER TABLE course_enrollment
-  OWNER TO postgres;
-
---
--- Name: course_owner; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE course_owner (
-  user_email  CHARACTER VARYING(255),
-  course_code CHARACTER VARYING(255)
-);
-
-
-ALTER TABLE course_owner
-  OWNER TO postgres;
-
---
--- Name: course_passed; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE course_passed (
-  course     CHARACTER VARYING(255),
-  user_email CHARACTER VARYING(255)
-);
-
-
-ALTER TABLE course_passed
-  OWNER TO postgres;
-
---
--- Name: course_restriction; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE course_restriction (
-  restriction CHARACTER VARYING(40),
-  course      CHARACTER VARYING(255)
-);
-
-
-ALTER TABLE course_restriction
-  OWNER TO postgres;
-
---
--- Name: restriction; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE restriction (
-  name CHARACTER VARYING(40) NOT NULL
+  name CHARACTER VARYING(40),
+  CONSTRAINT pk_name PRIMARY KEY (name)
 );
 
-
-ALTER TABLE restriction
-  OWNER TO postgres;
-
---
--- Name: user_account; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE user_account (
-  email         CHARACTER VARYING(255) NOT NULL,
-  first_name    CHARACTER VARYING(255) NOT NULL,
-  insertion     CHARACTER VARYING(255),
-  last_name     CHARACTER VARYING(255) NOT NULL,
-  date_of_birth DATE                   NOT NULL,
-  password      CHARACTER VARYING(255) NOT NULL,
-  role          CHARACTER VARYING(255)
+CREATE TABLE course_restriction (
+  restriction CHARACTER VARYING(40) REFERENCES Restriction(name),
+  course      CHARACTER VARYING(255) REFERENCES Course(code),
+  CONSTRAINT course_restriction_restriction_course_key UNIQUE (restriction, course)
 );
 
-
-ALTER TABLE user_account
-  OWNER TO postgres;
-
---
--- Name: user_role; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE user_role (
-  role_name CHARACTER VARYING(255) NOT NULL
+CREATE TABLE ab_restriction (
+  course          CHARACTER VARYING(255) REFERENCES Course(code),
+  required_course CHARACTER VARYING(255) REFERENCES Course(code),
+  CONSTRAINT ab_restriction_course_required_course_key UNIQUE (course, required_course)
 );
 
+CREATE TABLE Course_enrollment (
+  user_email VARCHAR(255) REFERENCES User_account (email),
+  course_code VARCHAR(255) REFERENCES Course (code),
+  enrollment_date DATE DEFAULT now(),
+  CONSTRAINT course_enrollment_user_email_course_code_key UNIQUE (user_email, course_code)
+);
 
-ALTER TABLE user_role
-  OWNER TO postgres;
+CREATE TABLE course_passed (
+  course     CHARACTER VARYING(255) REFERENCES Course(code),
+  user_email CHARACTER VARYING(255) REFERENCES User_account(email),
+  CONSTRAINT course_passed_course_user_email_key UNIQUE (course, user_email)
+);
 
---
--- Name: ab_restriction_course_required_course_key; Type: CONSTRAINT; Schema: public; Owner: postgres
---
+CREATE TABLE Course_owner (
+  user_email VARCHAR(255) REFERENCES User_account (email),
+  course_code VARCHAR(255) REFERENCES Course (code),
+  CONSTRAINT course_owner_user_email_course_code_key UNIQUE (user_email, course_code)
+);
 
-ALTER TABLE ONLY ab_restriction
-  ADD CONSTRAINT ab_restriction_course_required_course_key UNIQUE (course, required_course);
+CREATE TABLE Exam (
+  exam_name VARCHAR(255),
+  exam_weight INTEGER NOT NULL,
+  course_code VARCHAR(255) REFERENCES Course (code),
+  CONSTRAINT pk_exam_name PRIMARY KEY (exam_name),
+  CONSTRAINT exam_course_unique UNIQUE (exam_name, course_code)
+);
 
---
--- Name: course_enrollment_user_email_course_code_key; Type: CONSTRAINT; Schema: public; Owner: postgres
---
+CREATE TABLE Exam_result (
+  exam_name VARCHAR(255) REFERENCES Exam (exam_name),
+  exam_course VARCHAR(255) REFERENCES Course (code),
+  exam_date DATE DEFAULT now(),
+  exam_mutation_date DATE DEFAULT now(),
+  exam_result decimal NOT NULL,
+  user_email VARCHAR(255) REFERENCES User_account (email)
+);
 
-ALTER TABLE ONLY course_enrollment
-  ADD CONSTRAINT course_enrollment_user_email_course_code_key UNIQUE (user_email, course_code);
+INSERT INTO User_role VALUES ('admin');
+INSERT INTO User_role VALUES ('moduleleider');
+INSERT INTO User_role VALUES ('cursist');
 
---
--- Name: course_owner_user_email_course_code_key; Type: CONSTRAINT; Schema: public; Owner: postgres
---
+INSERT INTO User_account (email,first_name, last_name, date_of_birth, password, role) VALUES ('user@ipsenh.nl','cursist', 'cursist','1994-09-23', 'password', 'cursist');
+INSERT INTO User_account (email,first_name, last_name, date_of_birth, password, role) VALUES ('moduleleider@ipsenh.nl','moduleleider', 'modueleider','1994-09-23', 'password', 'moduleleider');
+INSERT INTO User_account (email, first_name, last_name, date_of_birth, password, role) VALUES ('admin@ipsenh.nl', 'admin', 'admin', '1994-09-23', 'password', 'admin');
 
-ALTER TABLE ONLY course_owner
-  ADD CONSTRAINT course_owner_user_email_course_code_key UNIQUE (user_email, course_code);
+INSERT INTO Course (code, description, start_date, end_date) VALUES ('IPSENH', 'Project Hoofdfase', '2017-05-02', '2017-05-22');
+INSERT INTO Course (code, description, start_date, end_date) VALUES ('IITORG', 'Inleiding Organisatiekunde', '2017-05-02', '2017-05-22');
+INSERT INTO Course (code, description, start_date, end_date) VALUES ('ILG1', 'Logica', '2017-05-02', '2017-05-22');
+INSERT INTO Course (code, description, start_date, end_date) VALUES ('ISCRIPT', 'Scripting', '2017-05-02', '2017-05-22');
+INSERT INTO Course (code, description, start_date, end_date) VALUES ('IKPMD', 'Programming for Mobile Devices', '2017-05-02', '2017-05-22');
+INSERT INTO Course (code, description, start_date, end_date) VALUES ('IRDBMS', 'Relationele databasemanagementsystemen', '2017-05-02', '2017-05-22');
+INSERT INTO Course (code, description, start_date, end_date) VALUES ('IRDM', 'Relationele Databases Modelleren', '2017-05-02', '2017-05-22');
+INSERT INTO Course (code, description, start_date, end_date) VALUES ('IPSEN5', 'Project Software Engineering 5', '2017-05-02', '2017-05-22');
+INSERT INTO Course (code, description, start_date, end_date) VALUES ('IPSEN4', 'Project Software Engineering 4', '2017-05-02', '2017-05-22');
+INSERT INTO Course (code, description, start_date, end_date) VALUES ('IAD1', 'Algoritmen en Datastructuren 1', '2017-05-02', '2017-05-22');
+INSERT INTO Course (code, description, start_date, end_date) VALUES ('IIAD', 'Inleiding Algoritmen en Datastructuren', '2017-05-02', '2017-05-22');
 
---
--- Name: course_passed_course_user_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
---
+INSERT INTO Restriction (name) VALUES ('AB_RESTRICTION');
+INSERT INTO Restriction (name) VALUES ('DATE_RESTRICTION');
 
-ALTER TABLE ONLY course_passed
-  ADD CONSTRAINT course_passed_course_user_email_key UNIQUE (course, user_email);
+INSERT INTO Course_restriction (course, restriction) VALUES ('IRDM', 'AB_RESTRICTION');
+INSERT INTO Course_restriction (course, restriction) VALUES ('IPSENH', 'DATE_RESTRICTION');
 
---
--- Name: course_restriction_restriction_course_key; Type: CONSTRAINT; Schema: public; Owner: postgres
---
+INSERT INTO Course_enrollment (user_email, course_code, enrollment_date) VALUES ('user@ipsenh.nl', 'IPSENH', '2017-05-03');
+INSERT INTO Course_enrollment (user_email, course_code, enrollment_date) VALUES ('user@ipsenh.nl', 'IIAD', '2017-05-04');
+INSERT INTO Course_enrollment (user_email, course_code, enrollment_date) VALUES ('user@ipsenh.nl', 'IITORG', '2017-05-05');
 
-ALTER TABLE ONLY course_restriction
-  ADD CONSTRAINT course_restriction_restriction_course_key UNIQUE (restriction, course);
+INSERT INTO Course_owner (user_email, course_code) VALUES ('moduleleider@ipsenh.nl', 'IPSENH');
+INSERT INTO Course_owner (user_email, course_code) VALUES ('moduleleider@ipsenh.nl', 'IPSEN5');
+INSERT INTO Course_owner (user_email, course_code) VALUES ('moduleleider@ipsenh.nl', 'IAD1');
+INSERT INTO Course_owner (user_email, course_code) VALUES ('moduleleider@ipsenh.nl', 'IIAD');
+INSERT INTO Course_owner (user_email, course_code) VALUES ('moduleleider@ipsenh.nl', 'IITORG');
 
---
--- Name: pk_code; Type: CONSTRAINT; Schema: public; Owner: postgres
---
+INSERT INTO Exam (exam_name, exam_weight, course_code) VALUES ('Toets 15-16 Versie A', 1, 'IPSEN5');
+INSERT INTO Exam (exam_name, exam_weight, course_code) VALUES ('Toets 15-16 Versie B', 1, 'IPSEN5');
+INSERT INTO Exam (exam_name, exam_weight, course_code) VALUES ('Toets 15-16 Herkansing', 1, 'IPSEN5');
+INSERT INTO Exam (exam_name, exam_weight, course_code) VALUES ('Toets 16-17 Versie A', 1, 'IPSENH');
+INSERT INTO Exam (exam_name, exam_weight, course_code) VALUES ('Toets 16-17 Versie B', 1, 'IPSENH');
 
-ALTER TABLE ONLY course
-  ADD CONSTRAINT pk_code PRIMARY KEY (code);
-
---
--- Name: pk_email; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY user_account
-  ADD CONSTRAINT pk_email PRIMARY KEY (email);
-
---
--- Name: pk_role_name; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY user_role
-  ADD CONSTRAINT pk_role_name PRIMARY KEY (role_name);
-
---
--- Name: restriction_name; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY restriction
-  ADD CONSTRAINT restriction_name PRIMARY KEY (name);
-
---
--- Name: fki_course; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX fki_course
-  ON ab_restriction USING BTREE (course);
-
---
--- Name: fki_course_name; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX fki_course_name
-  ON course_restriction USING BTREE (course);
-
---
--- Name: fki_required_course; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX fki_required_course
-  ON ab_restriction USING BTREE (required_course);
-
---
--- Name: fki_restriction; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX fki_restriction
-  ON course_restriction USING BTREE (restriction);
-
---
--- Name: course_enrollment_course_code_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY course_enrollment
-  ADD CONSTRAINT course_enrollment_course_code_fkey FOREIGN KEY (course_code) REFERENCES course (code);
-
---
--- Name: course_enrollment_user_email_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY course_enrollment
-  ADD CONSTRAINT course_enrollment_user_email_fkey FOREIGN KEY (user_email) REFERENCES user_account (email);
-
---
--- Name: course_owner_course_code_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY course_owner
-  ADD CONSTRAINT course_owner_course_code_fkey FOREIGN KEY (course_code) REFERENCES course (code);
-
---
--- Name: course_owner_user_email_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY course_owner
-  ADD CONSTRAINT course_owner_user_email_fkey FOREIGN KEY (user_email) REFERENCES user_account (email);
-
---
--- Name: fk_course; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY ab_restriction
-  ADD CONSTRAINT fk_course FOREIGN KEY (course) REFERENCES course (code);
-
---
--- Name: fk_course_code; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY course_passed
-  ADD CONSTRAINT fk_course_code FOREIGN KEY (course) REFERENCES course (code);
-
---
--- Name: fk_course_name; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY course_restriction
-  ADD CONSTRAINT fk_course_name FOREIGN KEY (course) REFERENCES course (code);
-
---
--- Name: fk_required_course; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY ab_restriction
-  ADD CONSTRAINT fk_required_course FOREIGN KEY (required_course) REFERENCES course (code);
-
---
--- Name: fk_restriction; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY course_restriction
-  ADD CONSTRAINT fk_restriction FOREIGN KEY (restriction) REFERENCES restriction (name);
-
---
--- Name: fk_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY course_passed
-  ADD CONSTRAINT fk_user FOREIGN KEY (user_email) REFERENCES user_account (email);
-
---
--- Name: user_account_role_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY user_account
-  ADD CONSTRAINT user_account_role_fkey FOREIGN KEY (role) REFERENCES user_role (role_name);
-
---
--- Name: public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
---
--- PostgreSQL database dump complete
---
+INSERT INTO Exam_result (exam_name, exam_course, exam_result, user_email) VALUES ('Toets 15-16 Herkansing', 'IPSEN5', '7.5', 'user@ipsenh.nl');
+INSERT INTO Exam_result (exam_name, exam_course, exam_result, user_email) VALUES ('Toets 16-17 Versie A', 'IPSENH','9.5', 'user@ipsenh.nl');

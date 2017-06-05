@@ -18,4 +18,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
     @SqlUpdate("INSERT INTO course_enrollment (user_email, course_code) VALUES (:user_email, :course_code)")
     void enroll(@Bind("user_email") String email, @Bind("course_code") String courseCode);
+
+    @SqlUpdate("DELETE FROM course_enrollment WHERE user_email = :email AND course_code = :course_code")
+    void removeEnrollment(@Bind("email") String email, @Bind("course_code") String courseCode);
 }

@@ -1,5 +1,6 @@
 package nl.ipsenh.service;
 
+import javax.ws.rs.NotFoundException;
 import nl.ipsenh.model.Course;
 import nl.ipsenh.model.CourseRestriction;
 import nl.ipsenh.model.EnrolledCourse;
@@ -49,7 +50,9 @@ public class EnrollmentService {
      */
     public void enrollToCourse(User user, String courseCode) {
         Course course = courseService.getCourseByCode(courseCode);
-        verifyEnrollment(user, course);
+        if(verifyEnrollment(user, course)) {
+            throw new ForbiddenException("You are already enrolled for this course");
+        }
         Collection<CourseRestriction> restrictions =
             restrictionService.getRestrictionByCourse(course);
 
@@ -61,6 +64,17 @@ public class EnrollmentService {
     }
 
     /**
+     * Verify if the course is a valid and existing course and remove it
+     *
+     * @param user The current logged in user
+     * @param courseCode The course from which to remove the enrollment
+     */
+    public void removeEnrollment(User user, String courseCode) {
+        courseService.getCourseByCode(courseCode);
+        enrollmentDAO.removeEnrollment(user.getEmail(), courseCode);
+    }
+
+    /**
      * Validate the restrictions according to their own implementation
      *
      * @param restriction {@link CourseRestriction} object, contains Course object and
@@ -69,9 +83,7 @@ public class EnrollmentService {
      */
     private void runValidation(CourseRestriction restriction, Course course, User user) {
         Restriction courseRestriction = getRestriction(restriction, course, user);
-        if (courseRestriction != null) {
-            courseRestriction.validate();
-        }
+        courseRestriction.validate();
     }
 
     /**
@@ -79,11 +91,8 @@ public class EnrollmentService {
      *
      * @param user {@link User} object current user
      */
-    private void verifyEnrollment(User user, Course course) {
-        EnrolledCourse enrolledCourse = enrollmentDAO.get(user.getEmail(), course.getCode());
-        if (enrolledCourse != null) {
-            throw new ForbiddenException("You are already enrolled for this course");
-        }
+    public boolean verifyEnrollment(User user, Course course) {
+        return (enrollmentDAO.get(user.getEmail(), course.getCode()) != null);
     }
 
     /**

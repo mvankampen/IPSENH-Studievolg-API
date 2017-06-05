@@ -2,6 +2,7 @@ package nl.ipsenh.persistence;
 
 import nl.ipsenh.mapper.CourseMapper;
 import nl.ipsenh.model.Course;
+import nl.ipsenh.model.User;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
@@ -19,6 +20,9 @@ import java.util.Collection;
 
     @SqlQuery("SELECT * FROM COURSE WHERE code = :code LIMIT 1") Course getCourseByCode(
         @Bind("code") String code);
+
+    @SqlQuery("SELECT * FROM course, course_enrollment WHERE course.code = course_enrollment.course_code AND course_enrollment.user_email = :email")
+    Collection<Course> getMyCourses(@BindBean User user);
 
     @SqlUpdate("INSERT INTO course (code, description, start_date, end_date) VALUES (:code, :description, :startDate, :endDate)")
     void insertCourse(@BindBean Course course);
