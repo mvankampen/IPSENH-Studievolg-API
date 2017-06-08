@@ -9,6 +9,21 @@ services:
 #     - volume-dropwizard:/dropwizard
     depends_on:
       - postgres
+  sonarqube:
+      image: sonarqube
+      ports:
+        - "9000:9000"
+      depends_on:
+        - postgres
+      environment:
+        - SONARQUBE_JDBC_URL=jdbc:postgresql://136.144.152.131:5432/sonardb
+        - SONARQUBE_JDBC_USERNAME=sonar
+        - SONARQUBE_JDBC_PASSWORD=sonarQube2017@
+      volumes:
+        - sonarqube_conf:/opt/sonarqube/conf
+        - sonarqube_data:/opt/sonarqube/data
+        - sonarqube_extensions:/opt/sonarqube/extensions
+        - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
   postgres:
     image: postgres
     ports:
@@ -21,21 +36,6 @@ services:
       POSTGRES_DBPASS: hsleiden2@
     volumes:
       - postgres-data:/var/lib/postgresql/data
-  sonarqube:
-    image: sonarqube
-    ports:
-      - "9000:9000"
-    depends_on:
-      - postgres
-    environment:
-      - SONARQUBE_JDBC_URL=jdbc:postgresql://136.144.152.131:5432/sonardb
-      - SONARQUBE_JDBC_USERNAME=sonar
-      - SONARQUBE_JDBC_PASSWORD=sonarQube2017@
-    volumes:
-      - sonarqube_conf:/opt/sonarqube/conf
-      - sonarqube_data:/opt/sonarqube/data
-      - sonarqube_extensions:/opt/sonarqube/extensions
-      - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
   web:
     image: nginx
     links:
