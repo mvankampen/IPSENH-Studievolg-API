@@ -1,10 +1,10 @@
 version: "3"
+
+networks:
+  devnet:
+    driver: bridge
+
 services:
-  networks:
-    devnet:
-      driver: bridge
-
-
   dropwizard:
     image: michaelvk1994/ipsenh-studievolg
     ports:
