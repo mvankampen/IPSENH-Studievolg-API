@@ -1,5 +1,10 @@
 version: "3"
 services:
+  networks:
+    devnet:
+      driver: bridge
+
+
   dropwizard:
     image: michaelvk1994/ipsenh-studievolg
     ports:
@@ -15,6 +20,8 @@ services:
         - "9000:9000"
       depends_on:
         - postgres
+      networks:
+        - devnet
       environment:
         - sonar.jdbc.url=jdbc:postgresql://136.144.152.131:5432/sonardb
         - SONARQUBE_JDBC_USERNAME=sonar
