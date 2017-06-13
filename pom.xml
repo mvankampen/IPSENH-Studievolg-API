@@ -94,6 +94,7 @@
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.7.9</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -123,7 +124,7 @@
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
-                <artifactId>org.jacoco.agent</artifactId>
+                <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.7.9</version>
                 <executions>
                     <execution>
@@ -137,12 +138,6 @@
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>report</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>default-check</id>
-                        <goals>
-                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
