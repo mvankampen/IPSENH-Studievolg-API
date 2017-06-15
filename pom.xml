@@ -129,6 +129,9 @@
                 <configuration>
                     <destFile>${sonar.jacoco.reportPath}</destFile>
                     <append>true</append>
+                    <excludes>
+                        <exclude>src/main/java/nl/ipsenh/mapper/*</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
