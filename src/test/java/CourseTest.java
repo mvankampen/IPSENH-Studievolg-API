@@ -1,4 +1,5 @@
 import io.dropwizard.testing.junit.ResourceTestRule;
+import java.sql.Date;
 import nl.ipsenh.model.Course;
 import nl.ipsenh.persistence.CourseDAO;
 import nl.ipsenh.resource.CourseResource;
@@ -40,11 +41,15 @@ public class CourseTest {
         when(dao.getCourseByCode("IIAD")).thenReturn(expectedCourse);
         when(dao.getAll()).thenReturn(expectedCourses);
     }
+    @Test
+    public void testCourse() {
+        Course course = new Course("test", "Dit is een test", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
+        assertEquals(course.getCode(), "test");
+    }
 
-    @Test public void getAllCourses() {
-        Collection<Course> testCourses =
-            resources.target("/courses").request().get(new GenericType<List<Course>>() {
-            });
+    @Test
+    public void getAllCourses() {
+        Collection<Course> testCourses = resources.target("/courses").request().get(new GenericType<List<Course>>(){});
         assertEquals(expectedCourses.size(), testCourses.size());
         verify(dao).getAll();
     }
